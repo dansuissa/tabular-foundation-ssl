@@ -1,0 +1,30 @@
+[
+  {
+    "method": "geometric_attention_supervised",
+    "ba": 0.6731601731601732,
+    "status": "success",
+    "labeled_attention_mass": null,
+    "unlabeled_attention_mass": null
+  },
+  {
+    "method": "geometric_attention_retrieval",
+    "ba": 0.5865800865800865,
+    "status": "success",
+    "labeled_attention_mass": null,
+    "unlabeled_attention_mass": null
+  },
+  {
+    "method": "geometric_attention_ssl",
+    "ba": 0.14502164502164502,
+    "status": "success",
+    "labeled_attention_mass": null,
+    "unlabeled_attention_mass": null
+  },
+  {
+    "method": "laplacian_mlp",
+    "ba": 0.6883116883116883,
+    "status": "success",
+    "labeled_attention_mass": null,
+    "unlabeled_attention_mass": null
+  }
+]

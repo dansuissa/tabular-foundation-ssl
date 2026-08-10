@@ -1,0 +1,2 @@
+timestamp_utc,dataset,dataset_id,method,seed,n_labeled,n_unlabeled,train_labeled_size,val_size,test_size,n_classes,n_features_before_preprocessing,n_features_after_preprocessing,runtime_seconds,status,error_message,metric_accuracy,metric_balanced_accuracy,metric_f1_macro,metric_roc_auc_ovr
+2026-06-28T15:16:10.315769+00:00,phoneme,1489,label_spreading,0,50,4273,40,10,1081,2,5,5,1.1802,success,,0.7483811285846439,0.6475733727517465,0.6591929082749156,

@@ -1,0 +1,4 @@
+method,mean,max
+laplacian_ssl,13.3963375,21.7295
+tabiclv2_self_training,25.7711625,46.6269
+tabpfn3_self_training,20.53365833333333,35.0951

@@ -1,0 +1,24 @@
+# ssl-tfm: TabPFN-3 + TabICLv2 + CUDA PyTorch
+# Create with: bash scripts/cluster/bootstrap_ssl_tfm.sh
+# PyTorch CUDA wheel is installed explicitly in the bootstrap script
+# AFTER the conda env exists, then tabpfn/tabicl are pip-installed.
+name: ssl-tfm
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - numpy>=1.24
+  - pandas>=2.0
+  - scikit-learn>=1.3
+  - scipy
+  - pyyaml>=6.0
+  - matplotlib>=3.7
+  - tqdm
+  - einops>=0.7
+  - psutil
+  - pip:
+      - catboost>=1.2
+      - huggingface_hub
+# NOTE: torch, tabpfn, tabicl versions are pinned in lock/ after first successful bootstrap.
+# Do not pip-install torch from this yaml alone — use the bootstrap script’s CUDA index URL.

@@ -1,0 +1,4 @@
+method,runtime_seconds_mean,runtime_seconds_std,runtime_seconds_count
+laplacian_ssl,6.15735,3.1735109403342316,96
+tabiclv2_self_training,7.417363541666667,2.6542099578284586,96
+tabpfn3_self_training,11.524540625,2.337146443605653,96

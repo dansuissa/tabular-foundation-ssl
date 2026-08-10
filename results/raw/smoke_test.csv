@@ -1,0 +1,2 @@
+timestamp_utc,dataset,dataset_id,method,seed,labeled_fraction,n_labeled,n_unlabeled,train_size,val_size,test_size,runtime_seconds,status,error_message,metric_accuracy,metric_balanced_accuracy,metric_f1_macro,metric_roc_auc_ovr
+2026-06-28T15:11:12.011360+00:00,credit-g,31,logistic_regression,0,0.1,65,585,650,150,200,0.1391,success,,0.725,0.655952380952381,0.6608183528105824,0.7286904761904761

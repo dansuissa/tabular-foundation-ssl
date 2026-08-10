@@ -1,0 +1,73 @@
+{"TABPFN_TOKEN_set": false, "HF_TOKEN_set": true}
+=== smoke 3 tabpfn3 ===
+{
+  "id": 3,
+  "method": "tabpfn3",
+  "status": "blocked_missing_TABPFN_TOKEN",
+  "job_id": null
+}
+=== smoke 6 tabpfn3_loop_risk ===
+{
+  "id": 6,
+  "method": "tabpfn3_loop_risk",
+  "status": "blocked_missing_TABPFN_TOKEN",
+  "job_id": null
+}
+{"TABPFN_TOKEN_set": false, "HF_TOKEN_set": true}
+=== smoke 2 sslae ===
+{
+  "id": 2,
+  "method": "sslae",
+  "status": "submitted",
+  "job_id": "18382902"
+}
+=== smoke 4 tabiclv2 ===
+{
+  "id": 4,
+  "method": "tabiclv2",
+  "status": "submitted",
+  "job_id": "18382903"
+}
+=== smoke 5 tabiclv2_pl_one_shot ===
+{
+  "id": 5,
+  "method": "tabiclv2_pl_one_shot",
+  "status": "submitted",
+  "job_id": "18382905"
+}
+=== smoke 7 laplacian_mlp ===
+{
+  "id": 7,
+  "method": "laplacian_mlp",
+  "status": "submitted",
+  "job_id": "18382906"
+}
+=== smoke 8 geometric_attention_ssl ===
+{
+  "id": 8,
+  "method": "geometric_attention_ssl",
+  "status": "submitted",
+  "job_id": "18382907"
+}
+=== smoke 9 stunt ===
+{
+  "id": 9,
+  "method": "stunt",
+  "status": "submitted",
+  "job_id": "18382908"
+}
+=== smoke 10 tabiclv2 ===
+{
+  "id": 10,
+  "method": "tabiclv2",
+  "status": "submitted",
+  "job_id": "18382909"
+}
+{"TABPFN_TOKEN_set": false, "HF_TOKEN_set": true}
+=== smoke 9 stunt ===
+{
+  "id": 9,
+  "method": "stunt",
+  "status": "status=failed",
+  "job_id": "18384200"
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "method": "geometric_attention_supervised",
+    "status": "success",
+    "ba": 0.670995670995671,
+    "err": null,
+    "loss": {}
+  },
+  {
+    "method": "geometric_attention_laplacian",
+    "status": "success",
+    "ba": 0.6774891774891775,
+    "err": null,
+    "loss": {}
+  },
+  {
+    "method": "geometric_attention_prototype",
+    "status": "success",
+    "ba": 0.6753246753246753,
+    "err": null,
+    "loss": {}
+  },
+  {
+    "method": "geometric_attention_retrieval",
+    "status": "success",
+    "ba": 0.14502164502164502,
+    "err": null,
+    "loss": {}
+  },
+  {
+    "method": "geometric_attention_ssl",
+    "status": "success",
+    "ba": 0.14285714285714285,
+    "err": null,
+    "loss": {}
+  },
+  {
+    "method": "laplacian_mlp",
+    "status": "success",
+    "ba": 0.6883116883116883,
+    "err": null,
+    "loss": {}
+  },
+  {
+    "method": "mlp",
+    "status": "success",
+    "ba": 0.45454545454545464,
+    "err": null,
+    "loss": {}
+  },
+  {
+    "method": "geometric_attention_ssl_regs_off",
+    "status": "success",
+    "ba": 0.816017316017316,
+    "err": null
+  }
+]

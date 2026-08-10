@@ -1,0 +1,49 @@
+dataset,method,n_labeled,error_message,count
+letter,catboost,50,SplitError: Could not stratify labeled validation split for n_labeled=50 and n_classes=26.,3
+letter,catboost,100,SplitError: Could not stratify labeled validation split for n_labeled=100 and n_classes=26.,3
+letter,label_propagation,50,SplitError: Could not stratify labeled validation split for n_labeled=50 and n_classes=26.,3
+letter,label_propagation,100,SplitError: Could not stratify labeled validation split for n_labeled=100 and n_classes=26.,3
+letter,label_propagation,250,ValueError: Predicted probabilities contain NaN or infinite values.,3
+letter,label_propagation,500,ValueError: Predicted probabilities contain NaN or infinite values.,3
+letter,label_spreading,50,SplitError: Could not stratify labeled validation split for n_labeled=50 and n_classes=26.,3
+letter,label_spreading,100,SplitError: Could not stratify labeled validation split for n_labeled=100 and n_classes=26.,3
+letter,label_spreading,250,ValueError: Predicted probabilities contain NaN or infinite values.,3
+letter,label_spreading,500,ValueError: Predicted probabilities contain NaN or infinite values.,3
+letter,lightgbm,50,SplitError: Could not stratify labeled validation split for n_labeled=50 and n_classes=26.,3
+letter,lightgbm,100,SplitError: Could not stratify labeled validation split for n_labeled=100 and n_classes=26.,3
+letter,logistic_regression,50,SplitError: Could not stratify labeled validation split for n_labeled=50 and n_classes=26.,3
+letter,logistic_regression,100,SplitError: Could not stratify labeled validation split for n_labeled=100 and n_classes=26.,3
+letter,mlp,50,SplitError: Could not stratify labeled validation split for n_labeled=50 and n_classes=26.,3
+letter,mlp,100,SplitError: Could not stratify labeled validation split for n_labeled=100 and n_classes=26.,3
+letter,random_forest,50,SplitError: Could not stratify labeled validation split for n_labeled=50 and n_classes=26.,3
+letter,random_forest,100,SplitError: Could not stratify labeled validation split for n_labeled=100 and n_classes=26.,3
+letter,rpl_lite_xgboost,50,SplitError: Could not stratify labeled validation split for n_labeled=50 and n_classes=26.,3
+letter,rpl_lite_xgboost,100,SplitError: Could not stratify labeled validation split for n_labeled=100 and n_classes=26.,3
+letter,rpl_lr,50,SplitError: Could not stratify labeled validation split for n_labeled=50 and n_classes=26.,3
+letter,rpl_lr,100,SplitError: Could not stratify labeled validation split for n_labeled=100 and n_classes=26.,3
+letter,self_training_catboost,50,SplitError: Could not stratify labeled validation split for n_labeled=50 and n_classes=26.,3
+letter,self_training_catboost,100,SplitError: Could not stratify labeled validation split for n_labeled=100 and n_classes=26.,3
+letter,self_training_lightgbm,50,SplitError: Could not stratify labeled validation split for n_labeled=50 and n_classes=26.,3
+letter,self_training_lightgbm,100,SplitError: Could not stratify labeled validation split for n_labeled=100 and n_classes=26.,3
+letter,self_training_lr,50,SplitError: Could not stratify labeled validation split for n_labeled=50 and n_classes=26.,3
+letter,self_training_lr,100,SplitError: Could not stratify labeled validation split for n_labeled=100 and n_classes=26.,3
+letter,self_training_xgboost,50,SplitError: Could not stratify labeled validation split for n_labeled=50 and n_classes=26.,3
+letter,self_training_xgboost,100,SplitError: Could not stratify labeled validation split for n_labeled=100 and n_classes=26.,3
+letter,xgboost,50,SplitError: Could not stratify labeled validation split for n_labeled=50 and n_classes=26.,3
+letter,xgboost,100,SplitError: Could not stratify labeled validation split for n_labeled=100 and n_classes=26.,3
+phoneme,label_propagation,50,ValueError: Predicted probabilities contain NaN or infinite values.,3
+phoneme,label_propagation,100,ValueError: Predicted probabilities contain NaN or infinite values.,3
+phoneme,label_propagation,250,ValueError: Predicted probabilities contain NaN or infinite values.,3
+phoneme,label_propagation,500,ValueError: Predicted probabilities contain NaN or infinite values.,3
+phoneme,label_spreading,50,ValueError: Predicted probabilities contain NaN or infinite values.,3
+phoneme,label_spreading,100,ValueError: Predicted probabilities contain NaN or infinite values.,3
+phoneme,label_spreading,250,ValueError: Predicted probabilities contain NaN or infinite values.,3
+phoneme,label_spreading,500,ValueError: Predicted probabilities contain NaN or infinite values.,3
+spambase,label_propagation,50,ValueError: Predicted probabilities contain NaN or infinite values.,3
+spambase,label_propagation,100,ValueError: Predicted probabilities contain NaN or infinite values.,3
+spambase,label_propagation,250,ValueError: Predicted probabilities contain NaN or infinite values.,3
+spambase,label_propagation,500,ValueError: Predicted probabilities contain NaN or infinite values.,3
+spambase,label_spreading,50,ValueError: Predicted probabilities contain NaN or infinite values.,3
+spambase,label_spreading,100,ValueError: Predicted probabilities contain NaN or infinite values.,3
+spambase,label_spreading,250,ValueError: Predicted probabilities contain NaN or infinite values.,3
+spambase,label_spreading,500,ValueError: Predicted probabilities contain NaN or infinite values.,3

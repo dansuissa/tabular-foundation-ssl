@@ -1,0 +1,8 @@
+Command:
+/private/ofirlin-lab/suissad4/envs/ssl-tfm/bin/python -m pytest -q
+
+.........s.................                                              [100%]
+26 passed, 1 skipped in 19.63s
+
+Run date: 2026-08-10
+Context: GitHub repository staging tree after the all-method visual and documentation audit.

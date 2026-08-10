@@ -1,0 +1,46 @@
+{
+  "wave": "tfm_frozen_screen",
+  "phase": "A",
+  "submitted": true,
+  "timestamp_utc_note": "see submission.json mtime",
+  "gates": {
+    "token_secure": true,
+    "tabpfn3_verified": true,
+    "smoke_3": "success",
+    "smoke_6": "success",
+    "tabiclv2_prior_smoke": "success",
+    "source_versioning": "snapshot",
+    "source_tree_hash": "b5ee701b1c0a40017af2f98820534067ab190a5950ec2fc5503808e51ed4e215",
+    "openml_cache": true,
+    "model_cache": true,
+    "phase_a_methods_complete": true,
+    "geometric_attention_blocks_phase_a": false,
+    "geometric_attention_phase_c": "mitigated_labeled_only_memory_pass"
+  },
+  "slurm": {
+    "small_job_id": "18409306",
+    "large_job_id": "18409307",
+    "validate_job_id": "18409308",
+    "report_job_id": "18409309",
+    "array_small": "0-191%2",
+    "array_large": "192-239%2",
+    "n_tasks": 240,
+    "partition": "p_uriofir",
+    "account": "ug_uri_ofir",
+    "concurrency": 2
+  },
+  "checkpoints": {
+    "tabpfn3": "tabpfn-v3-classifier-v3_default.ckpt",
+    "tabpfn3_sha256": "d0d865d54dfbc524f5703104be90620182dca7e5fb2c16de72e9959ea18f3988",
+    "tabiclv2": "tabicl-classifier-v2-20260212.ckpt"
+  },
+  "paths": {
+    "shards": "/private/ofirlin-lab/suissad4/results/raw_shards/tfm_frozen_screen/",
+    "combined_csv": "results/raw/tfm_frozen_screen.csv",
+    "aggregated": "results/aggregated/tfm_frozen_screen/",
+    "reports": "results/reports/tfm_frozen_screen/",
+    "logs": "/private/ofirlin-lab/suissad4/results/logs/tfm_frozen_screen/"
+  },
+  "historical_untouched": "results/raw/low_class_wave_paper_methods.csv",
+  "phase_b_auto_start": false
+}

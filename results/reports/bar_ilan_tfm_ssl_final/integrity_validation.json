@@ -1,0 +1,168 @@
+{
+  "generated_utc": "2026-07-30T08:28:10.825253+00:00",
+  "phase_a": {
+    "label": "Phase A",
+    "rows": 240,
+    "expected_rows": 240,
+    "methods": [
+      "tabiclv2",
+      "tabpfn3"
+    ],
+    "datasets": [
+      "MagicTelescope",
+      "adult",
+      "bank-marketing",
+      "electricity",
+      "jannis",
+      "phoneme",
+      "satimage",
+      "segment",
+      "spambase",
+      "steel-plates-fault"
+    ],
+    "budgets": [
+      50,
+      100,
+      250,
+      500
+    ],
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "status_counts": {
+      "success": 240
+    },
+    "duplicate_keys": 0,
+    "missing_keys": 0,
+    "unexpected_keys": 0,
+    "missing_columns": [],
+    "metric_nonfinite": {
+      "metric_balanced_accuracy": {
+        "nan": 0,
+        "inf": 0
+      },
+      "metric_macro_f1": {
+        "nan": 0,
+        "inf": 0
+      },
+      "metric_accuracy": {
+        "nan": 0,
+        "inf": 0
+      },
+      "metric_log_loss": {
+        "nan": 0,
+        "inf": 0
+      },
+      "metric_roc_auc": {
+        "nan": 0,
+        "inf": 0
+      },
+      "metric_average_precision": {
+        "nan": 96,
+        "inf": 0
+      },
+      "metric_brier": {
+        "nan": 0,
+        "inf": 0
+      },
+      "metric_ece": {
+        "nan": 0,
+        "inf": 0
+      }
+    },
+    "valid": true
+  },
+  "phase_c": {
+    "label": "Phase C",
+    "rows": 720,
+    "expected_rows": 720,
+    "methods": [
+      "embedding_alignment_ssl",
+      "geometric_attention_ssl",
+      "laplacian_ssl",
+      "tabiclv2_self_training",
+      "tabpfn3_self_training",
+      "unlabeled_attention_ssl"
+    ],
+    "datasets": [
+      "MagicTelescope",
+      "adult",
+      "bank-marketing",
+      "electricity",
+      "jannis",
+      "phoneme",
+      "satimage",
+      "segment",
+      "spambase",
+      "steel-plates-fault"
+    ],
+    "budgets": [
+      50,
+      100,
+      250,
+      500
+    ],
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "status_counts": {
+      "success": 720
+    },
+    "duplicate_keys": 0,
+    "missing_keys": 0,
+    "unexpected_keys": 0,
+    "missing_columns": [],
+    "metric_nonfinite": {
+      "metric_balanced_accuracy": {
+        "nan": 0,
+        "inf": 0
+      },
+      "metric_macro_f1": {
+        "nan": 0,
+        "inf": 0
+      },
+      "metric_accuracy": {
+        "nan": 0,
+        "inf": 0
+      },
+      "metric_log_loss": {
+        "nan": 0,
+        "inf": 0
+      },
+      "metric_roc_auc": {
+        "nan": 0,
+        "inf": 0
+      },
+      "metric_average_precision": {
+        "nan": 288,
+        "inf": 0
+      },
+      "metric_brier": {
+        "nan": 0,
+        "inf": 0
+      },
+      "metric_ece": {
+        "nan": 0,
+        "inf": 0
+      }
+    },
+    "valid": true
+  },
+  "historical": {
+    "rows": 2040,
+    "methods": 17,
+    "datasets": 10,
+    "duplicate_keys": 0,
+    "status_counts": {
+      "success": 2016,
+      "failed_graph_ssl_nan": 24
+    },
+    "sha256": "b017a950054a5045a4a39c41362d3dc3eef56603d1db4d62d4ffbfbdc43e8ad5"
+  },
+  "canonical_phase_c_sha256": "0a3bca9fc2728dabf7ac846a7a477c64ac5536feb582f28c92a2594d50b06a9a",
+  "all_checks_passed": true
+}

@@ -1,0 +1,3 @@
+timestamp_utc,dataset,dataset_id,method,seed,n_labeled,n_unlabeled,train_labeled_size,val_size,test_size,n_classes,n_features_before_preprocessing,n_features_after_preprocessing,runtime_seconds,status,error_message,metric_accuracy,metric_balanced_accuracy,metric_f1_macro,metric_roc_auc_ovr
+2026-06-28T15:16:10.469349+00:00,spambase,44,logistic_regression,0,50,3630,40,10,921,2,57,57,0.9219,success,,0.8479913137893594,0.8586673183447378,0.8453214971209213,0.9299544812741294
+2026-06-28T15:17:17.039906+00:00,spambase,44,logistic_regression,0,50,3630,40,10,921,2,57,57,0.0993,success,,0.8479913137893594,0.8586673183447378,0.8453214971209213,0.9299544812741294

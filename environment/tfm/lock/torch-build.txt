@@ -1,0 +1,4 @@
+torch 2.6.0+cu124
+cuda 12.4
+cudnn 90100
+device0 NVIDIA A100 80GB PCIe

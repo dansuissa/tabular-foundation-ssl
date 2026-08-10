@@ -1,0 +1,251 @@
+method,dataset,mean_balanced_accuracy,mean_cell_rank,evaluated_budget_cells,display_name,family
+tabiclv2_self_training,phoneme,0.7662282675717487,3.875,4,TabICL v2 + self-training,TFM self-training
+tabiclv2_self_training,spambase,0.9128170759402432,2.875,4,TabICL v2 + self-training,TFM self-training
+tabiclv2_self_training,MagicTelescope,0.7982890176353565,3.25,4,TabICL v2 + self-training,TFM self-training
+tabiclv2_self_training,adult,0.7245906662174046,7.875,4,TabICL v2 + self-training,TFM self-training
+tabiclv2_self_training,bank-marketing,0.6348548436162795,5.5,4,TabICL v2 + self-training,TFM self-training
+tabiclv2_self_training,electricity,0.7303549606192223,6.875,4,TabICL v2 + self-training,TFM self-training
+tabiclv2_self_training,satimage,0.8129350651186136,3.0,4,TabICL v2 + self-training,TFM self-training
+tabiclv2_self_training,segment,0.9336219336219336,2.5,4,TabICL v2 + self-training,TFM self-training
+tabiclv2_self_training,steel-plates-fault,0.712544466792065,3.0,4,TabICL v2 + self-training,TFM self-training
+tabiclv2_self_training,jannis,0.4222432045712482,1.875,4,TabICL v2 + self-training,TFM self-training
+tabiclv2,phoneme,0.7670938141719106,3.125,4,TabICL v2,frozen TFM
+tabiclv2,spambase,0.9113193271917612,3.125,4,TabICL v2,frozen TFM
+tabiclv2,MagicTelescope,0.799335158453927,2.5,4,TabICL v2,frozen TFM
+tabiclv2,adult,0.722813662906227,9.375,4,TabICL v2,frozen TFM
+tabiclv2,bank-marketing,0.6301236240051546,6.25,4,TabICL v2,frozen TFM
+tabiclv2,electricity,0.7314766724372429,6.125,4,TabICL v2,frozen TFM
+tabiclv2,satimage,0.8130488328532697,2.5,4,TabICL v2,frozen TFM
+tabiclv2,segment,0.9336219336219336,2.5,4,TabICL v2,frozen TFM
+tabiclv2,steel-plates-fault,0.7059596435040253,3.0,4,TabICL v2,frozen TFM
+tabiclv2,jannis,0.4198929127621709,2.875,4,TabICL v2,frozen TFM
+tabpfn3_self_training,phoneme,0.7649248724131666,3.125,4,TabPFN-3 + self-training,TFM self-training
+tabpfn3_self_training,spambase,0.9157490101405058,2.0,4,TabPFN-3 + self-training,TFM self-training
+tabpfn3_self_training,MagicTelescope,0.798376757989373,2.25,4,TabPFN-3 + self-training,TFM self-training
+tabpfn3_self_training,adult,0.7124577406695347,12.375,4,TabPFN-3 + self-training,TFM self-training
+tabpfn3_self_training,bank-marketing,0.6172502031021461,8.625,4,TabPFN-3 + self-training,TFM self-training
+tabpfn3_self_training,electricity,0.7393017083663056,5.25,4,TabPFN-3 + self-training,TFM self-training
+tabpfn3_self_training,satimage,0.8080101498187864,4.25,4,TabPFN-3 + self-training,TFM self-training
+tabpfn3_self_training,segment,0.9341630591630592,2.375,4,TabPFN-3 + self-training,TFM self-training
+tabpfn3_self_training,steel-plates-fault,0.7106954406557581,2.25,4,TabPFN-3 + self-training,TFM self-training
+tabpfn3_self_training,jannis,0.40889846037974104,4.375,4,TabPFN-3 + self-training,TFM self-training
+tabpfn3,phoneme,0.7654059036781343,2.875,4,TabPFN-3,frozen TFM
+tabpfn3,spambase,0.9157490101405058,2.0,4,TabPFN-3,frozen TFM
+tabpfn3,MagicTelescope,0.7985230676816059,2.0,4,TabPFN-3,frozen TFM
+tabpfn3,adult,0.7109701958330298,13.375,4,TabPFN-3,frozen TFM
+tabpfn3,bank-marketing,0.6121196298273504,10.125,4,TabPFN-3,frozen TFM
+tabpfn3,electricity,0.7398538249419121,5.25,4,TabPFN-3,frozen TFM
+tabpfn3,satimage,0.8060594285867866,4.25,4,TabPFN-3,frozen TFM
+tabpfn3,segment,0.933982683982684,2.625,4,TabPFN-3,frozen TFM
+tabpfn3,steel-plates-fault,0.6956667001061843,4.0,4,TabPFN-3,frozen TFM
+tabpfn3,jannis,0.40869106748360295,5.375,4,TabPFN-3,frozen TFM
+catboost,phoneme,0.7282772061373809,10.25,4,CatBoost,supervised
+catboost,spambase,0.8795296562891872,11.5,4,CatBoost,supervised
+catboost,MagicTelescope,0.7666919583162095,8.0,4,CatBoost,supervised
+catboost,adult,0.7200839851910843,12.0,4,CatBoost,supervised
+catboost,bank-marketing,0.6235343945938332,7.25,4,CatBoost,supervised
+catboost,electricity,0.7335087782025701,6.75,4,CatBoost,supervised
+catboost,satimage,0.7931208316312603,8.5,4,CatBoost,supervised
+catboost,segment,0.9096320346320346,5.625,4,CatBoost,supervised
+catboost,steel-plates-fault,0.6765857234541968,7.25,4,CatBoost,supervised
+catboost,jannis,0.39377343190144065,9.5,4,CatBoost,supervised
+rpl_lite_xgboost,phoneme,0.7560168477931745,5.0,4,RPL-lite XGBoost,robust pseudo-labeling
+rpl_lite_xgboost,spambase,0.8595016637538632,17.5,4,RPL-lite XGBoost,robust pseudo-labeling
+rpl_lite_xgboost,MagicTelescope,0.7712125565387324,6.75,4,RPL-lite XGBoost,robust pseudo-labeling
+rpl_lite_xgboost,adult,0.725390707904989,7.5,4,RPL-lite XGBoost,robust pseudo-labeling
+rpl_lite_xgboost,bank-marketing,0.6587941009825053,6.5,4,RPL-lite XGBoost,robust pseudo-labeling
+rpl_lite_xgboost,electricity,0.7304820536573893,6.75,4,RPL-lite XGBoost,robust pseudo-labeling
+rpl_lite_xgboost,satimage,0.7530589657603087,16.0,4,RPL-lite XGBoost,robust pseudo-labeling
+rpl_lite_xgboost,segment,0.8661616161616161,12.375,4,RPL-lite XGBoost,robust pseudo-labeling
+rpl_lite_xgboost,steel-plates-fault,0.6318841356109004,14.0,4,RPL-lite XGBoost,robust pseudo-labeling
+rpl_lite_xgboost,jannis,0.40905124729830494,4.25,4,RPL-lite XGBoost,robust pseudo-labeling
+self_training_xgboost,phoneme,0.7511327288442587,6.0,4,Self-training XGBoost,classical self-training
+self_training_xgboost,spambase,0.8585210610503866,17.75,4,Self-training XGBoost,classical self-training
+self_training_xgboost,MagicTelescope,0.7696531573798275,8.25,4,Self-training XGBoost,classical self-training
+self_training_xgboost,adult,0.7253302764484679,7.75,4,Self-training XGBoost,classical self-training
+self_training_xgboost,bank-marketing,0.6508174244872337,8.25,4,Self-training XGBoost,classical self-training
+self_training_xgboost,electricity,0.7316311067779189,6.25,4,Self-training XGBoost,classical self-training
+self_training_xgboost,satimage,0.7550107565381293,15.25,4,Self-training XGBoost,classical self-training
+self_training_xgboost,segment,0.8721139971139971,11.625,4,Self-training XGBoost,classical self-training
+self_training_xgboost,steel-plates-fault,0.6429310585064554,12.75,4,Self-training XGBoost,classical self-training
+self_training_xgboost,jannis,0.4068901974213486,5.0,4,Self-training XGBoost,classical self-training
+self_training_catboost,phoneme,0.7023935606498533,16.25,4,Self-training CatBoost,classical self-training
+self_training_catboost,spambase,0.8764082664375918,13.0,4,Self-training CatBoost,classical self-training
+self_training_catboost,MagicTelescope,0.7594724728656514,11.75,4,Self-training CatBoost,classical self-training
+self_training_catboost,adult,0.7335789520215581,4.0,4,Self-training CatBoost,classical self-training
+self_training_catboost,bank-marketing,0.6195561177444002,8.0,4,Self-training CatBoost,classical self-training
+self_training_catboost,electricity,0.7308796133880027,9.75,4,Self-training CatBoost,classical self-training
+self_training_catboost,satimage,0.7803344587503928,12.25,4,Self-training CatBoost,classical self-training
+self_training_catboost,segment,0.9054834054834056,7.375,4,Self-training CatBoost,classical self-training
+self_training_catboost,steel-plates-fault,0.6442948198456762,11.75,4,Self-training CatBoost,classical self-training
+self_training_catboost,jannis,0.38750314972121896,11.25,4,Self-training CatBoost,classical self-training
+xgboost,phoneme,0.7238710216856327,12.0,4,XGBoost,supervised
+xgboost,spambase,0.8724438915054751,13.25,4,XGBoost,supervised
+xgboost,MagicTelescope,0.7708915238271887,7.5,4,XGBoost,supervised
+xgboost,adult,0.7029080836155323,17.5,4,XGBoost,supervised
+xgboost,bank-marketing,0.5996020963613644,14.5,4,XGBoost,supervised
+xgboost,electricity,0.7324788511869049,5.0,4,XGBoost,supervised
+xgboost,satimage,0.7700914060484125,12.0,4,XGBoost,supervised
+xgboost,segment,0.8804112554112553,10.0,4,XGBoost,supervised
+xgboost,steel-plates-fault,0.6663126580132637,6.75,4,XGBoost,supervised
+xgboost,jannis,0.3978121537960358,7.75,4,XGBoost,supervised
+self_training_lightgbm,phoneme,0.7061272303609868,9.375,4,Self-training LightGBM,classical self-training
+self_training_lightgbm,spambase,0.8317374626025652,14.625,4,Self-training LightGBM,classical self-training
+self_training_lightgbm,MagicTelescope,0.7186421430104124,10.125,4,Self-training LightGBM,classical self-training
+self_training_lightgbm,adult,0.681162918314322,8.75,4,Self-training LightGBM,classical self-training
+self_training_lightgbm,bank-marketing,0.6525367645463158,8.25,4,Self-training LightGBM,classical self-training
+self_training_lightgbm,electricity,0.6875412341226099,9.875,4,Self-training LightGBM,classical self-training
+self_training_lightgbm,satimage,0.7454338947689463,14.0,4,Self-training LightGBM,classical self-training
+self_training_lightgbm,segment,0.763888888888889,11.5,4,Self-training LightGBM,classical self-training
+self_training_lightgbm,steel-plates-fault,0.5686317856352318,12.625,4,Self-training LightGBM,classical self-training
+self_training_lightgbm,jannis,0.3898468553229623,10.0,4,Self-training LightGBM,classical self-training
+random_forest,phoneme,0.7225640136312836,12.75,4,Random forest,supervised
+random_forest,spambase,0.892241698510027,6.5,4,Random forest,supervised
+random_forest,MagicTelescope,0.7580957524576392,12.75,4,Random forest,supervised
+random_forest,adult,0.7108879641566589,15.5,4,Random forest,supervised
+random_forest,bank-marketing,0.569662181650456,17.0,4,Random forest,supervised
+random_forest,electricity,0.7315663788188955,6.5,4,Random forest,supervised
+random_forest,satimage,0.7917730548438782,9.25,4,Random forest,supervised
+random_forest,segment,0.9036796536796536,7.5,4,Random forest,supervised
+random_forest,steel-plates-fault,0.6323655092895903,14.0,4,Random forest,supervised
+random_forest,jannis,0.3977755284341393,8.5,4,Random forest,supervised
+self_training_lr,phoneme,0.6482460595350169,21.5,4,Self-training LR,classical self-training
+self_training_lr,spambase,0.8776079465229025,11.5,4,Self-training LR,classical self-training
+self_training_lr,MagicTelescope,0.7353685003946042,15.25,4,Self-training LR,classical self-training
+self_training_lr,adult,0.7530268897773593,1.5,4,Self-training LR,classical self-training
+self_training_lr,bank-marketing,0.721372500975561,2.25,4,Self-training LR,classical self-training
+self_training_lr,electricity,0.7161611930907232,12.75,4,Self-training LR,classical self-training
+self_training_lr,satimage,0.7544959427244223,17.5,4,Self-training LR,classical self-training
+self_training_lr,segment,0.8578643578643579,14.75,4,Self-training LR,classical self-training
+self_training_lr,steel-plates-fault,0.6446958108377282,11.5,4,Self-training LR,classical self-training
+self_training_lr,jannis,0.37454022449132335,13.0,4,Self-training LR,classical self-training
+logistic_regression,phoneme,0.6649166487742305,18.75,4,Logistic regression,supervised
+logistic_regression,spambase,0.8717237131826574,14.5,4,Logistic regression,supervised
+logistic_regression,MagicTelescope,0.727261382606134,16.75,4,Logistic regression,supervised
+logistic_regression,adult,0.7284419976203849,8.5,4,Logistic regression,supervised
+logistic_regression,bank-marketing,0.6334164927623036,6.0,4,Logistic regression,supervised
+logistic_regression,electricity,0.7137180209747325,14.0,4,Logistic regression,supervised
+logistic_regression,satimage,0.7586354104982292,16.75,4,Logistic regression,supervised
+logistic_regression,segment,0.8834776334776335,10.625,4,Logistic regression,supervised
+logistic_regression,steel-plates-fault,0.6657177974625239,9.0,4,Logistic regression,supervised
+logistic_regression,jannis,0.37034410256748046,15.75,4,Logistic regression,supervised
+sslae,phoneme,0.6952950806811238,15.75,4,SSLAE,neural SSL
+sslae,spambase,0.8787058019096142,11.5,4,SSLAE,neural SSL
+sslae,MagicTelescope,0.7381416411174029,16.5,4,SSLAE,neural SSL
+sslae,adult,0.7228329713297706,7.5,4,SSLAE,neural SSL
+sslae,bank-marketing,0.5971697089572879,12.0,4,SSLAE,neural SSL
+sslae,electricity,0.6972930657074953,16.0,4,SSLAE,neural SSL
+sslae,satimage,0.7742873356640737,13.0,4,SSLAE,neural SSL
+sslae,segment,0.8243145743145743,16.375,4,SSLAE,neural SSL
+sslae,steel-plates-fault,0.6083445538959323,15.0,4,SSLAE,neural SSL
+sslae,jannis,0.3670821993521834,16.75,4,SSLAE,neural SSL
+lightgbm,phoneme,0.6907631330481554,12.875,4,LightGBM,supervised
+lightgbm,spambase,0.8277052045380491,17.375,4,LightGBM,supervised
+lightgbm,MagicTelescope,0.7123254436722082,13.875,4,LightGBM,supervised
+lightgbm,adult,0.6605036533810899,20.0,4,LightGBM,supervised
+lightgbm,bank-marketing,0.5909428082506621,15.25,4,LightGBM,supervised
+lightgbm,electricity,0.6860645919999947,10.625,4,LightGBM,supervised
+lightgbm,satimage,0.7502992892016971,12.75,4,LightGBM,supervised
+lightgbm,segment,0.7658730158730158,12.375,4,LightGBM,supervised
+lightgbm,steel-plates-fault,0.5685499130074109,13.375,4,LightGBM,supervised
+lightgbm,jannis,0.372626894289098,15.75,4,LightGBM,supervised
+unlabeled_attention_ssl,phoneme,0.7457519227487186,7.75,4,Unlabeled attention SSL,geometric SSL
+unlabeled_attention_ssl,spambase,0.876112049132577,13.0,4,Unlabeled attention SSL,geometric SSL
+unlabeled_attention_ssl,MagicTelescope,0.7557161552570868,12.0,4,Unlabeled attention SSL,geometric SSL
+unlabeled_attention_ssl,adult,0.7232144056274862,9.25,4,Unlabeled attention SSL,geometric SSL
+unlabeled_attention_ssl,bank-marketing,0.6072114085207811,10.5,4,Unlabeled attention SSL,geometric SSL
+unlabeled_attention_ssl,electricity,0.6879098371548036,17.75,4,Unlabeled attention SSL,geometric SSL
+unlabeled_attention_ssl,satimage,0.7053339007186143,19.5,4,Unlabeled attention SSL,geometric SSL
+unlabeled_attention_ssl,segment,0.7871572871572872,18.0,4,Unlabeled attention SSL,geometric SSL
+unlabeled_attention_ssl,steel-plates-fault,0.4296457921758151,20.5,4,Unlabeled attention SSL,geometric SSL
+unlabeled_attention_ssl,jannis,0.3585829324635398,18.5,4,Unlabeled attention SSL,geometric SSL
+scarf,phoneme,0.6987407509868366,15.0,4,SCARF,neural SSL
+scarf,spambase,0.8872467342042122,8.75,4,SCARF,neural SSL
+scarf,MagicTelescope,0.7466481366312796,14.75,4,SCARF,neural SSL
+scarf,adult,0.7030260542221783,15.75,4,SCARF,neural SSL
+scarf,bank-marketing,0.5633322699816409,17.5,4,SCARF,neural SSL
+scarf,electricity,0.7051487443265967,16.25,4,SCARF,neural SSL
+scarf,satimage,0.7731803712400802,12.25,4,SCARF,neural SSL
+scarf,segment,0.8474025974025974,14.875,4,SCARF,neural SSL
+scarf,steel-plates-fault,0.5780148492554507,17.5,4,SCARF,neural SSL
+scarf,jannis,0.37171689514043493,15.0,4,SCARF,neural SSL
+vime,phoneme,0.7021107225240997,15.5,4,VIME,neural SSL
+vime,spambase,0.880984823800073,11.75,4,VIME,neural SSL
+vime,MagicTelescope,0.7471868533126758,13.5,4,VIME,neural SSL
+vime,adult,0.7205840640076326,10.25,4,VIME,neural SSL
+vime,bank-marketing,0.5522043191806945,20.0,4,VIME,neural SSL
+vime,electricity,0.6942433830227455,18.0,4,VIME,neural SSL
+vime,satimage,0.7734577865640173,12.25,4,VIME,neural SSL
+vime,segment,0.8320707070707072,16.0,4,VIME,neural SSL
+vime,steel-plates-fault,0.5931368492850323,17.0,4,VIME,neural SSL
+vime,jannis,0.35946220280807495,17.75,4,VIME,neural SSL
+rpl_lr,phoneme,0.6526875127311565,19.75,4,RPL LR,robust pseudo-labeling
+rpl_lr,spambase,0.871350973073847,14.75,4,RPL LR,robust pseudo-labeling
+rpl_lr,MagicTelescope,0.722995443563101,19.0,4,RPL LR,robust pseudo-labeling
+rpl_lr,adult,0.7149321639513138,14.0,4,RPL LR,robust pseudo-labeling
+rpl_lr,bank-marketing,0.5934734965015926,13.0,4,RPL LR,robust pseudo-labeling
+rpl_lr,electricity,0.7080620838590637,16.0,4,RPL LR,robust pseudo-labeling
+rpl_lr,satimage,0.7416441029318921,19.25,4,RPL LR,robust pseudo-labeling
+rpl_lr,segment,0.8412698412698413,17.25,4,RPL LR,robust pseudo-labeling
+rpl_lr,steel-plates-fault,0.6317411102890427,13.75,4,RPL LR,robust pseudo-labeling
+rpl_lr,jannis,0.36821661888750373,16.25,4,RPL LR,robust pseudo-labeling
+label_spreading,phoneme,0.7065860681233862,16.0,4,Label spreading,graph SSL
+label_spreading,spambase,0.7994205660383568,24.25,3,Label spreading,graph SSL
+label_spreading,MagicTelescope,0.6894816590837178,21.0,4,Label spreading,graph SSL
+label_spreading,adult,0.7066087117055275,15.75,4,Label spreading,graph SSL
+label_spreading,bank-marketing,0.5650380666096126,16.75,4,Label spreading,graph SSL
+label_spreading,electricity,0.6369021996958237,24.5,2,Label spreading,graph SSL
+label_spreading,satimage,0.8166615717796737,2.75,4,Label spreading,graph SSL
+label_spreading,segment,0.8434343434343434,17.25,4,Label spreading,graph SSL
+label_spreading,steel-plates-fault,0.6578667619877415,9.5,4,Label spreading,graph SSL
+label_spreading,jannis,0.35303305472935975,18.5,4,Label spreading,graph SSL
+laplacian_ssl,phoneme,0.6980752899951003,16.0,4,Laplacian SSL,geometric SSL
+laplacian_ssl,spambase,0.876342234663349,11.5,4,Laplacian SSL,geometric SSL
+laplacian_ssl,MagicTelescope,0.7116478426480555,18.25,4,Laplacian SSL,geometric SSL
+laplacian_ssl,adult,0.5994003184012044,20.0,4,Laplacian SSL,geometric SSL
+laplacian_ssl,bank-marketing,0.5158715548095654,22.875,4,Laplacian SSL,geometric SSL
+laplacian_ssl,electricity,0.6777539821793177,18.25,4,Laplacian SSL,geometric SSL
+laplacian_ssl,satimage,0.666052627886979,23.0,4,Laplacian SSL,geometric SSL
+laplacian_ssl,segment,0.738095238095238,21.5,4,Laplacian SSL,geometric SSL
+laplacian_ssl,steel-plates-fault,0.3370537802202902,23.25,4,Laplacian SSL,geometric SSL
+laplacian_ssl,jannis,0.35447262224425147,18.25,4,Laplacian SSL,geometric SSL
+label_propagation,phoneme,0.6724600310502584,20.25,4,Label propagation,graph SSL
+label_propagation,spambase,0.5631288446537713,25.25,3,Label propagation,graph SSL
+label_propagation,MagicTelescope,0.520007679932887,24.0,4,Label propagation,graph SSL
+label_propagation,adult,0.6831168919250528,20.25,4,Label propagation,graph SSL
+label_propagation,bank-marketing,0.49967485901219166,24.75,4,Label propagation,graph SSL
+label_propagation,electricity,0.5593319324653218,23.5,4,Label propagation,graph SSL
+label_propagation,satimage,0.805960040601432,5.25,4,Label propagation,graph SSL
+label_propagation,segment,0.7934704184704184,19.75,4,Label propagation,graph SSL
+label_propagation,steel-plates-fault,0.6188794200033235,15.5,4,Label propagation,graph SSL
+label_propagation,jannis,0.27661444220988085,25.0,4,Label propagation,graph SSL
+geometric_attention_ssl,phoneme,0.6652342395164087,17.75,4,Combined geometric + attention SSL,geometric SSL
+geometric_attention_ssl,spambase,0.83347341943383,15.0,4,Combined geometric + attention SSL,geometric SSL
+geometric_attention_ssl,MagicTelescope,0.6695414892159679,19.75,4,Combined geometric + attention SSL,geometric SSL
+geometric_attention_ssl,adult,0.6233111880512578,20.25,4,Combined geometric + attention SSL,geometric SSL
+geometric_attention_ssl,bank-marketing,0.5266118606523968,21.625,4,Combined geometric + attention SSL,geometric SSL
+geometric_attention_ssl,electricity,0.6539908480554454,18.75,4,Combined geometric + attention SSL,geometric SSL
+geometric_attention_ssl,satimage,0.6513096798701062,23.25,4,Combined geometric + attention SSL,geometric SSL
+geometric_attention_ssl,segment,0.6713564213564214,23.0,4,Combined geometric + attention SSL,geometric SSL
+geometric_attention_ssl,steel-plates-fault,0.3331555676389114,23.75,4,Combined geometric + attention SSL,geometric SSL
+geometric_attention_ssl,jannis,0.33360722956302935,22.25,4,Combined geometric + attention SSL,geometric SSL
+embedding_alignment_ssl,phoneme,0.6474400396936815,20.25,4,Embedding alignment SSL,geometric SSL
+embedding_alignment_ssl,spambase,0.8537044442469662,20.25,4,Embedding alignment SSL,geometric SSL
+embedding_alignment_ssl,MagicTelescope,0.6061930293849871,23.0,4,Embedding alignment SSL,geometric SSL
+embedding_alignment_ssl,adult,0.6277117147177088,22.5,4,Embedding alignment SSL,geometric SSL
+embedding_alignment_ssl,bank-marketing,0.5472581950088363,19.75,4,Embedding alignment SSL,geometric SSL
+embedding_alignment_ssl,electricity,0.5484407754332251,23.5,4,Embedding alignment SSL,geometric SSL
+embedding_alignment_ssl,satimage,0.6698348075006904,22.0,4,Embedding alignment SSL,geometric SSL
+embedding_alignment_ssl,segment,0.6663059163059164,23.25,4,Embedding alignment SSL,geometric SSL
+embedding_alignment_ssl,steel-plates-fault,0.31293793930202657,22.75,4,Embedding alignment SSL,geometric SSL
+embedding_alignment_ssl,jannis,0.35096256227334044,18.25,4,Embedding alignment SSL,geometric SSL
+mlp,phoneme,0.562896902406395,23.25,4,MLP,supervised
+mlp,spambase,0.7929792795995142,22.25,4,MLP,supervised
+mlp,MagicTelescope,0.6590106767433205,22.25,4,MLP,supervised
+mlp,adult,0.5424515585205005,23.5,4,MLP,supervised
+mlp,bank-marketing,0.5012667201696313,22.5,4,MLP,supervised
+mlp,electricity,0.6417038394597119,21.25,4,MLP,supervised
+mlp,satimage,0.6324111908966408,24.25,4,MLP,supervised
+mlp,segment,0.5629509379509379,24.0,4,MLP,supervised
+mlp,steel-plates-fault,0.414404707936715,21.25,4,MLP,supervised
+mlp,jannis,0.31576459146565705,23.25,4,MLP,supervised

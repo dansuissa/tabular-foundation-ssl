@@ -1,0 +1,14 @@
+* text=auto eol=lf
+*.ps1 text eol=crlf
+*.png binary
+*.pdf binary
+*.ipynb text
+*.csv -text
+*.json text
+*.jsonl -text
+*.yaml text
+*.yml text
+
+# Research outputs are evidence. Preserve their exact bytes—including legacy
+# line endings—so committed SHA-256 identities remain reproducible.
+results/** -text

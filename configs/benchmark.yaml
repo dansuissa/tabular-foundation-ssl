@@ -1,0 +1,182 @@
+seeds: [0, 1, 2, 3, 4]
+label_budgets: [50, 100, 250, 500, 1000]
+test_size: 0.2
+val_size_from_labeled: 0.2
+use_all_remaining_as_unlabeled: true
+metrics:
+  - accuracy
+  - balanced_accuracy
+  - macro_f1
+  - log_loss
+  - roc_auc
+  - average_precision
+full_first_wave_methods:
+  - logistic_regression
+  - random_forest
+  - xgboost
+  - lightgbm
+  - catboost
+  - mlp
+  - label_spreading
+  - label_propagation
+  - self_training_lr
+  - self_training_xgboost
+  - self_training_lightgbm
+  - self_training_catboost
+  - rpl_lr
+  - rpl_lite_xgboost
+neural_ssl_methods:
+  - sslae
+  - vime
+  - scarf
+neural_ssl_experimental_methods:
+  - vime_lite
+paper_methods_no_vime_lite:
+  - logistic_regression
+  - random_forest
+  - xgboost
+  - lightgbm
+  - catboost
+  - mlp
+  - label_spreading
+  - label_propagation
+  - self_training_lr
+  - self_training_xgboost
+  - self_training_lightgbm
+  - self_training_catboost
+  - rpl_lr
+  - rpl_lite_xgboost
+  - sslae
+  - scarf
+  - vime
+all_methods_with_neural:
+  - logistic_regression
+  - random_forest
+  - xgboost
+  - lightgbm
+  - catboost
+  - mlp
+  - label_spreading
+  - label_propagation
+  - self_training_lr
+  - self_training_xgboost
+  - self_training_lightgbm
+  - self_training_catboost
+  - rpl_lr
+  - rpl_lite_xgboost
+  - sslae
+  - vime
+  - scarf
+  - vime_lite
+neural_ssl_defaults:
+  batch_size: 256
+  hidden_dim: 128
+  embedding_dim: 64
+  dropout: 0.1
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  max_epochs: 100
+  pretrain_epochs: 50
+  patience: 10
+  device: cpu
+sslae:
+  recon_weight: 1.0
+vime:
+  mask_prob: 0.3
+  mask_loss_weight: 1.0
+  feature_loss_weight: 1.0
+  consistency_weight: 0.1
+vime_lite:
+  mask_prob: 0.3
+  mask_loss_weight: 1.0
+  consistency_weight: 0.1
+scarf:
+  corruption_rate: 0.3
+  temperature: 0.1
+local_debug_methods:
+  - logistic_regression
+  - xgboost
+  - label_spreading
+  - self_training_xgboost
+  - rpl_lite_xgboost
+methods:
+  - logistic_regression
+  - random_forest
+  - xgboost
+  - lightgbm
+  - catboost
+  - mlp
+  - label_spreading
+  - label_propagation
+  - self_training_lr
+  - self_training_xgboost
+  - self_training_lightgbm
+  - self_training_catboost
+  - rpl_lr
+  - rpl_lite_xgboost
+
+# Additive TFM / modern SSL method groups (also available via METHOD_GROUPS)
+tfm_frozen:
+  - tabpfn3
+  - tabiclv2
+focused_tfm_ssl:
+  - tabpfn3_self_training
+  - tabiclv2_self_training
+  - laplacian_ssl
+  - unlabeled_attention_ssl
+  - embedding_alignment_ssl
+  - geometric_attention_ssl
+tfm_ssl_core:
+  - tabpfn3_pl_one_shot
+  - tabiclv2_pl_one_shot
+  - tabpfn3_loop_risk
+  - tabiclv2_loop_risk
+  - tabpfn3_cast
+  - tabiclv2_cast
+  - tfm_consensus_context_tabiclv2
+  - tabpfn3_teacher_catboost
+  - tabiclv2_teacher_catboost
+  - tfm_consensus_catboost
+modern_ssl:
+  - cast_catboost
+  - cast_lightgbm
+  - stunt
+  - seba
+  - d2r2_c
+geometric_ssl_ablation:
+  - laplacian_linear
+  - laplacian_mlp
+  - prototype_alignment_ssl
+  - retrieval_attention_ssl
+  - geometric_attention_supervised
+  - geometric_attention_laplacian
+  - geometric_attention_prototype
+  - geometric_attention_retrieval
+  - geometric_attention_ssl
+tfm_geometric:
+  - tabpfn3_laplacian_adapter
+  - tabiclv2_laplacian_adapter
+  - tabpfn3_geometric_attention
+  - tabiclv2_geometric_attention
+transductive_exploratory:
+  - tabpfn3_distpfn_transductive
+  - d2r2_transductive
+laplacian_linear:
+  max_epochs: 20
+  patience: 5
+laplacian_mlp:
+  max_epochs: 20
+  patience: 5
+prototype_alignment_ssl:
+  max_epochs: 20
+retrieval_attention_ssl:
+  max_epochs: 15
+  k: 8
+geometric_attention_ssl:
+  max_epochs: 20
+stunt:
+  max_epochs: 20
+seba:
+  max_epochs: 20
+d2r2_c:
+  max_epochs: 20

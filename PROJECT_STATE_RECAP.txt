@@ -1,0 +1,852 @@
+================================================================================
+SSL TABULAR BENCHMARK — FULL PROJECT STATE RECAP
+================================================================================
+Generated: 2026-07-22
+Project path: projects/ssl-foundation-models/ssl_tabular_benchmark/
+
+This document summarizes the current state of the benchmark codebase, implemented
+methods, datasets, experiment protocol, checked-in results, and conclusions as
+they exist in the repository today.
+
+
+================================================================================
+1. WHAT THIS PROJECT IS
+================================================================================
+
+A lightweight research codebase for benchmarking semi-supervised learning (SSL)
+methods on tabular classification datasets from OpenML.
+
+Design principles:
+- scikit-learn for data loading, preprocessing, classical models, and metrics
+- PyTorch for neural SSL baselines (optional at import time)
+- Absolute label budgets (not labeled fractions)
+- One shared preprocessing pipeline for ALL methods
+- Leakage-safe fitting: preprocessor never sees validation or test data
+- CSV-based per-run logging with resume support
+- Failure isolation: one crashing method does not stop the full benchmark
+
+Out of scope for the current first wave:
+- FT-Transformer, TabPFN, SAINT, GFTab, and other heavy transformer models
+
+
+================================================================================
+2. PROJECT LAYOUT
+================================================================================
+
+ssl_tabular_benchmark/
+  configs/
+    benchmark.yaml      — seeds, budgets, metrics, method groups, neural defaults
+    datasets.yaml       — OpenML dataset registry and dataset groups
+  src/
+    run_benchmark.py    — main experiment CLI and orchestration
+    data.py             — OpenML loading and optional row subsampling
+    splits.py           — train/test, labeled/unlabeled, validation splitting
+    preprocessing.py    — shared sklearn preprocessing
+    metrics.py          — accuracy, balanced accuracy, F1, probability metrics
+    aggregate_results.py — summary tables, rankings, plots
+    combine_results.py  — merge raw CSVs, reject duplicate run keys
+    check_runs.py       — health summary for a raw run CSV
+    models/
+      supervised.py     — LR, RF, XGBoost, LightGBM, CatBoost, MLP
+      semi_supervised.py — self-training wrappers, graph SSL
+      self_training_utils.py — pseudo-label selection logic
+      graph_ssl.py      — robust label spreading/propagation with retries
+      rpl.py            — RPL-style pseudo-labeling
+      neural_ssl.py     — SSLAE, VIME, VIME-lite, SCARF
+      torch_utils.py    — PyTorch helpers, internal val split, determinism
+      common.py         — shared array utilities
+  scripts/
+    run_mini_wave.ps1
+    aggregate_mini_wave.ps1
+    preflight_low_class_wave.py
+    filter_reuse_phoneme_spambase.py
+    build_low_class_wave_report.py
+    analyze_all_methods.py
+    make_supervisor_figures.py
+  results/
+    raw/                — per-run CSV outputs for each experiment wave
+    aggregated/         — machine-readable summaries per wave
+    reports/            — polished narrative reports
+    supervisor_brief/ — presentation-oriented first-wave summary
+  notebooks/
+    01_quick_results.ipynb
+  README.md
+  requirements.txt
+
+
+================================================================================
+3. CANONICAL CURRENT STATE (MOST IMPORTANT)
+================================================================================
+
+The repo contains several historical experiment waves, but the MOST POLISHED and
+CLEARLY INTENDED current result set is:
+
+  Canonical raw file:
+    results/raw/low_class_wave_paper_methods.csv
+
+  Canonical aggregated outputs:
+    results/aggregated/low_class_wave_paper_methods/
+
+  Canonical polished report:
+    results/reports/low_class_wave_paper_methods/
+      low_class_wave_report.md
+      report_summary.json
+      overall_method_ranking.csv
+      best_method_by_dataset_budget.csv
+      dataset_table.csv
+      figures/
+
+The script scripts/build_low_class_wave_report.py regenerates that report and
+explicitly treats low_class_wave_paper_methods as the canonical analysis artifact.
+
+
+--------------------------------------------------------------------------------
+3.1 Canonical wave grid
+--------------------------------------------------------------------------------
+
+  Datasets:     10
+  Methods:      17
+  Label budgets: 50, 100, 250, 500
+  Seeds:        0, 1, 2
+  Total runs:   2,040
+
+  Intentionally EXCLUDED from this wave:
+    - dataset: letter
+    - method:  vime_lite
+
+  Dataset group name:  low_class_wave
+  Method group name:   paper_methods_no_vime_lite
+
+
+--------------------------------------------------------------------------------
+3.2 Canonical wave integrity (from report_summary.json)
+--------------------------------------------------------------------------------
+
+  Row count:           2,040 (expected 2,040) ✓
+  Datasets:            10 ✓
+  Methods:             17 ✓
+  Duplicate keys:      0 ✓
+  Rows per dataset:    204 each ✓
+
+  Status counts:
+    success:              2,016
+    failed_graph_ssl_nan:    24
+    other failures:             0
+
+  Complete cells (all 17 methods present): 37 / 40
+  (3 incomplete cells due to graph-SSL failures on electricity/spambase)
+
+
+--------------------------------------------------------------------------------
+3.3 How the canonical wave was built (procedural workflow)
+--------------------------------------------------------------------------------
+
+There is NO single checked-in script that runs the full low-class wave end to
+end. The workflow was:
+
+  1. Preflight
+     scripts/preflight_low_class_wave.py
+     Validates dataset group, method group, OpenML IDs, class counts, budget
+     feasibility, and expected row counts.
+
+  2. Reuse prior results
+     scripts/filter_reuse_phoneme_spambase.py
+     Extracts phoneme + spambase rows from:
+       results/raw/mini_wave_all_methods_plus_vime.csv
+     → results/raw/low_class_wave_reused_phoneme_spambase.csv
+     (408 reused rows)
+
+  3. Run 8 new datasets
+     Per-dataset raw files:
+       low_class_wave_new_adult.csv
+       low_class_wave_new_bank_marketing.csv
+       low_class_wave_new_electricity.csv
+       low_class_wave_new_jannis.csv
+       low_class_wave_new_MagicTelescope.csv
+       low_class_wave_new_satimage.csv
+       low_class_wave_new_segment.csv
+       low_class_wave_new_steel_plates_fault.csv
+     (1,632 new rows)
+
+  4. Combine
+     src/combine_results.py
+     → results/raw/low_class_wave_paper_methods.csv (2,040 rows)
+
+  5. Aggregate
+     python -m src.aggregate_results
+       --input results/raw/low_class_wave_paper_methods.csv
+       --output_dir results/aggregated/low_class_wave_paper_methods
+
+  6. Build polished report
+     python scripts/build_low_class_wave_report.py
+     → results/reports/low_class_wave_paper_methods/
+
+
+================================================================================
+4. DATASETS
+================================================================================
+
+--------------------------------------------------------------------------------
+4.1 All datasets configured (configs/datasets.yaml)
+--------------------------------------------------------------------------------
+
+  name                 openml_id   max_rows    notes
+  -------------------  ----------  ----------  ---------------------------
+  phoneme              1489        full
+  spambase             44          full
+  letter               6           full        excluded from canonical wave
+  MagicTelescope       1120        full
+  adult                1590        full
+  bank-marketing       1461        full
+  electricity          151         full
+  satimage             182         full
+  segment              36          full
+  steel-plates-fault   40982       full
+  jannis               41168       full
+  helena               41169       full        not yet in canonical wave
+  miniboone_100k       41150       100,000
+  covertype_100k       150         100,000
+  higgs_100k           42769       100,000
+
+Dataset group "low_class_wave" (canonical wave):
+  phoneme, spambase, MagicTelescope, adult, bank-marketing, electricity,
+  satimage, segment, steel-plates-fault, jannis
+
+
+--------------------------------------------------------------------------------
+4.2 Datasets in the canonical wave (ordered small → large)
+--------------------------------------------------------------------------------
+
+  dataset              openml_id  ~rows   raw→proc feats  classes  task        size
+  -------------------  ---------  ------  --------------  -------  ----------  ------
+  steel-plates-fault   40982      1,941   27 → 27         7        multiclass  small
+  segment              36         2,310   19 → 19         7        multiclass  small
+  spambase             44         4,601   57 → 57         2        binary      medium
+  phoneme              1489       5,404   5 → 5           2        binary      medium
+  satimage             182        6,430   36 → 36         6        multiclass  medium
+  MagicTelescope       1120       19,020  10 → 10         2        binary      large
+  bank-marketing       1461       45,211  16 → 51         2        binary      large
+  electricity          151        45,312  8 → 14          2        binary      large
+  adult                1590       48,842  14 → 108        2        binary      large
+  jannis               41168      83,733  54 → 54         4        multiclass  large
+
+Note: Large datasets may be subsampled for graph-SSL stages (e.g. 20,000 rows for
+the k-NN neighbor graph). "Rows used" is the effective working size.
+
+
+--------------------------------------------------------------------------------
+4.3 Data loading (src/data.py)
+--------------------------------------------------------------------------------
+
+  - fetch_openml(data_id=..., as_frame=True, parser="auto")
+  - Target column extracted if present in X (default target_column="class")
+  - Labels cast to string
+  - Optional stratified subsample to max_rows for large datasets
+  - Task type: binary if 2 classes, else multiclass
+
+
+================================================================================
+5. SPLIT AND PREPROCESSING PROTOCOL
+================================================================================
+
+--------------------------------------------------------------------------------
+5.1 Default benchmark config (configs/benchmark.yaml)
+--------------------------------------------------------------------------------
+
+  seeds:                    [0, 1, 2, 3, 4]   (canonical wave uses 0,1,2)
+  label_budgets:            [50, 100, 250, 500, 1000]
+  test_size:                0.2
+  val_size_from_labeled:    0.2
+  use_all_remaining_as_unlabeled: true
+
+  metrics:
+    accuracy, balanced_accuracy, macro_f1, log_loss, roc_auc, average_precision
+
+
+--------------------------------------------------------------------------------
+5.2 Split protocol (src/splits.py)
+--------------------------------------------------------------------------------
+
+  1. Stratified train/test split (test_size=0.2, seed=seed)
+  2. Sample exactly n_labeled examples from train pool with strict per-class rules:
+       - n_labeled=50  → min 3 labels per class
+       - n_labeled≥100 → min 5 labels per class
+       - All classes must be present in labeled set
+       - Remaining budget allocated proportionally (largest-remainder scheme)
+  3. Split labeled set into labeled_train / validation (val_size_from_labeled=0.2)
+       - Falls back to "no_val_low_label_multiclass" if stratified val split
+         would leave too few labeled training examples per class
+  4. All remaining train-pool rows become unlabeled train
+
+  Failures:
+    - InvalidBudgetError → status=skipped_invalid_budget
+    - SplitError → status=failed
+
+
+--------------------------------------------------------------------------------
+5.3 Preprocessing (src/preprocessing.py) — SAME FOR ALL METHODS
+--------------------------------------------------------------------------------
+
+  Numeric columns:
+    SimpleImputer(strategy="median") → StandardScaler()
+
+  Categorical columns:
+    SimpleImputer(strategy="constant", fill_value="missing")
+    → OneHotEncoder(handle_unknown="ignore", sparse_output=False)
+
+  Fit scope:
+    preprocessor.fit(labeled_train + unlabeled_train) ONLY
+    validation and test are transform-only
+
+  No model-specific preprocessing exists.
+
+
+================================================================================
+6. IMPLEMENTED METHODS
+================================================================================
+
+--------------------------------------------------------------------------------
+6.1 Method groups (configs/benchmark.yaml)
+--------------------------------------------------------------------------------
+
+  full_first_wave_methods (14):
+    logistic_regression, random_forest, xgboost, lightgbm, catboost, mlp,
+    label_spreading, label_propagation,
+    self_training_lr, self_training_xgboost, self_training_lightgbm,
+    self_training_catboost,
+    rpl_lr, rpl_lite_xgboost
+
+  neural_ssl_methods (3):
+    sslae, vime, scarf
+
+  neural_ssl_experimental_methods (1):
+    vime_lite
+
+  paper_methods_no_vime_lite (17) — CANONICAL WAVE:
+    full_first_wave_methods + sslae + scarf + vime
+    (excludes vime_lite)
+
+  all_methods_with_neural (18):
+    paper_methods + vime_lite
+
+
+--------------------------------------------------------------------------------
+6.2 Supervised baselines (src/models/supervised.py)
+--------------------------------------------------------------------------------
+
+  Method                  Implementation notes
+  ----------------------  -------------------------------------------------
+  logistic_regression     LogisticRegression(max_iter=2000)
+  random_forest           RandomForestClassifier(n_estimators=300)
+  xgboost                 XGBClassifier(500 trees, lr=0.05, max_depth=6)
+  lightgbm                LGBMClassifier(500 trees, lr=0.05)
+  catboost                CatBoostClassifier(500 iters, lr=0.05, depth=6)
+  mlp                     MLPClassifier(128,64), early_stopping=True
+
+  Optional deps (xgboost, lightgbm, catboost) fail cleanly per-run if missing.
+
+
+--------------------------------------------------------------------------------
+6.3 Graph SSL (src/models/semi_supervised.py + graph_ssl.py)
+--------------------------------------------------------------------------------
+
+  label_spreading       sklearn LabelSpreading with robust retry ladder
+  label_propagation     sklearn LabelPropagation with robust retry ladder
+
+  Robustness features:
+    - Retries across neighbor counts [7, 15, 30, 50, 5, 3]
+    - Caps graph at 20,000 rows
+    - Validates outputs for NaN/inf
+    - Raises GraphSSLNanError → status=failed_graph_ssl_nan
+    - Raises GraphSSLMissingClassesError if labeled classes missing
+
+
+--------------------------------------------------------------------------------
+6.4 Self-training (src/models/semi_supervised.py + self_training_utils.py)
+--------------------------------------------------------------------------------
+
+  self_training_lr          wraps LogisticRegression
+  self_training_xgboost     wraps XGBoost
+  self_training_lightgbm    wraps LightGBM (with stable DataFrame wrapper)
+  self_training_catboost    wraps CatBoost (150 iterations in self-training)
+
+  Iterative pseudo-labeling with confidence thresholds, per-class caps,
+  max iteration limits, and stopping reasons logged in result rows.
+
+
+--------------------------------------------------------------------------------
+6.5 RPL / pseudo-labeling (src/models/rpl.py)
+--------------------------------------------------------------------------------
+
+  rpl_lr
+    Iterative pseudo-labeling with reliability (max prob) and plausibility
+    (margin between top-2 probs) thresholds. max_rounds=5.
+
+  rpl_lite_xgboost
+  Density-aware pseudo-labeling with k-NN density scoring, confidence
+  threshold=0.90, max_iter=3, caps on pseudo-label volume per iteration
+  and total. Logs pseudo-label metadata extensively.
+
+
+--------------------------------------------------------------------------------
+6.6 Neural SSL (src/models/neural_ssl.py)
+--------------------------------------------------------------------------------
+
+  Method      Fidelity tag           Reference family      Description
+  ----------  ---------------------  --------------------  -------------------
+  sslae       style_baseline         supervised_autoencoder  Joint recon + cls
+  vime        paper_faithful_core    VIME                  Mask + feature recon
+                                                          pretrain, consistency
+                                                          fine-tune (Yoon 2020)
+  vime_lite   lite_ablation          VIME                  Lightweight ablation;
+                                                          NOT full VIME
+  scarf       paper_faithful_core    SCARF                 NT-Xent contrastive
+                                                          pretrain + cls finetune
+
+  Default neural hyperparameters (configs/benchmark.yaml → neural_ssl_defaults):
+    batch_size:       256
+    hidden_dim:       128
+    embedding_dim:    64
+    dropout:          0.1
+    learning_rate:    0.001
+    weight_decay:     0.0001
+    max_epochs:       100
+    pretrain_epochs:  50
+    patience:         10
+    device:           cpu
+
+  Per-method overrides:
+    sslae:      recon_weight=1.0
+    vime:       mask_prob=0.3, mask_loss_weight=1.0, feature_loss_weight=1.0,
+                consistency_weight=0.1
+    vime_lite:  mask_prob=0.3, mask_loss_weight=1.0, consistency_weight=0.1
+    scarf:      corruption_rate=0.3, temperature=0.1
+
+  Neural methods use an INTERNAL stratified validation holdout from labeled data
+  for early stopping (src/models/torch_utils.py::internal_val_split), because
+  the shared runner does not pass an external validation set into model.fit().
+
+  PyTorch is optional at import time; missing torch → clean per-run failure row.
+
+
+================================================================================
+7. EXPERIMENT RUNNER AND OUTPUTS
+================================================================================
+
+--------------------------------------------------------------------------------
+7.1 Main entrypoint
+--------------------------------------------------------------------------------
+
+  python -m src.run_benchmark [options]
+
+  Key options:
+    --datasets-config       configs/datasets.yaml
+    --benchmark-config      configs/benchmark.yaml
+    --output                results/raw/<name>.csv
+    --dataset / --datasets-subset / --dataset-group
+    --method / --methods / --method-group
+    --seed / --seeds
+    --label-budget / --label-budgets
+    --resume                skip successful runs already in output CSV
+    --skip-failed           also skip previously failed runs
+    --overwrite             replace existing output file
+    --rerun_existing        remove matching rows and rerun
+
+  Example — canonical wave (if re-running):
+    python -m src.run_benchmark \
+      --dataset-group low_class_wave \
+      --method-group paper_methods_no_vime_lite \
+      --label-budgets 50 100 250 500 \
+      --seeds 0 1 2 \
+      --output results/raw/low_class_wave_paper_methods.csv \
+      --resume
+
+  Example — tiny neural smoke test:
+    python -m src.run_benchmark \
+      --datasets-subset phoneme \
+      --method sslae \
+      --label-budget 100 \
+      --seed 0 \
+      --output results/raw/neural_smoke.csv \
+      --overwrite
+
+
+--------------------------------------------------------------------------------
+7.2 Per-run result row fields (selected)
+--------------------------------------------------------------------------------
+
+  Identity:     dataset, dataset_id, method, seed, n_labeled
+  Split sizes:  n_unlabeled, train_labeled_size, val_size, test_size
+  Features:     n_features_before_preprocessing, n_features_after_preprocessing
+  Class info:   n_classes, labeled_class_counts, unlabeled_class_counts, ...
+  Metrics:      metric_accuracy, metric_balanced_accuracy, metric_macro_f1, ...
+  Runtime:      runtime_seconds
+  Status:       success | failed | skipped_invalid_budget | failed_graph_ssl_nan |
+                failed_graph_missing_labeled_classes
+  Pseudo-label: n_pseudo_added_total, pseudo_label_fraction, stopped_reason, ...
+  Graph SSL:    graph_n_neighbors_used, graph_retry_count, ...
+  Neural:       neural_method, method_fidelity, reference_family, best_epoch,
+                pretrain_epochs_trained, finetune_epochs_trained, ...
+
+
+--------------------------------------------------------------------------------
+7.3 Aggregation (src/aggregate_results.py)
+--------------------------------------------------------------------------------
+
+  python -m src.aggregate_results \
+    --input results/raw/<wave>.csv \
+    --output_dir results/aggregated/<wave>
+
+  Outputs:
+    summary_by_dataset_method_budget.csv
+    summary_by_method_budget.csv
+    rankings_by_dataset_budget.csv              (complete-seed headline)
+    rankings_by_dataset_budget_complete_only.csv
+    rankings_by_dataset_budget_all_successes.csv (exploratory)
+    best_method_by_dataset_budget.csv
+    method_coverage_by_dataset_budget.csv
+    runtime_by_method.csv
+    failures.csv
+    skipped_invalid_budget.csv
+    failed_graph_ssl_nan.csv
+    pseudo_label_summary.csv
+    ssl_vs_supervised_by_dataset_budget.csv
+    plots/
+
+
+--------------------------------------------------------------------------------
+7.4 Other utilities
+--------------------------------------------------------------------------------
+
+  python -m src.combine_results     — merge raw CSVs, reject duplicate keys
+  python -m src.check_runs          — health summary for a raw CSV
+  notebooks/01_quick_results.ipynb  — quick inspection of aggregated outputs
+
+
+================================================================================
+8. CANONICAL WAVE RESULTS (low_class_wave_paper_methods)
+================================================================================
+
+Primary metric: balanced accuracy (robust to class imbalance on imbalanced
+binary datasets). Rankings are failure-aware mean rank per (dataset × budget)
+cell over successful seeds.
+
+Headline ranking variant: within each of 40 (dataset × budget) cells, rank
+methods by mean balanced accuracy (1=best), then average rank across cells.
+37/40 cells have all 17 methods; 3 incomplete due to graph-SSL wipeouts.
+
+
+--------------------------------------------------------------------------------
+8.1 Overall method ranking (failure-aware mean rank)
+--------------------------------------------------------------------------------
+
+  rank  method                    family            mean_rank  mean_bal_acc
+  ----  ------------------------  ----------------  ---------  ------------
+   1    catboost                  Supervised          4.81       0.722
+   2    rpl_lite_xgboost          RPL/pseudo-label    6.24       0.716
+   3    xgboost                   Supervised          6.40       0.712
+   4    self_training_xgboost     Self-training       6.46       0.716
+   5    self_training_catboost    Self-training       6.69       0.714
+   6    self_training_lightgbm    Self-training       6.75       0.675
+   7    random_forest             Supervised          6.80       0.711
+   8    self_training_lr          Self-training       8.28       0.708
+   9    logistic_regression       Supervised          8.71       0.702
+  10    lightgbm                  Supervised          9.26       0.663
+  11    sslae                     Neural SSL          9.61       0.690
+  12    scarf                     Neural SSL         10.06       0.687
+  13    vime                      Neural SSL         10.43       0.686
+  14    label_spreading           Graph SSL          10.95       0.674  (37/40 cells)
+  15    rpl_lr                    RPL/pseudo-label   11.30       0.685
+  16    label_propagation         Graph SSL          13.97       0.598  (39/40 cells)
+  17    mlp                       Supervised         15.78       0.563
+
+
+--------------------------------------------------------------------------------
+8.2 Best method per dataset × budget (selected cells)
+--------------------------------------------------------------------------------
+
+  dataset              budget  winner                    family
+  -------------------  ------  ------------------------  ----------------
+  steel-plates-fault   50      logistic_regression       Supervised
+  steel-plates-fault   500     self_training_lightgbm    Self-training
+  segment              50      catboost                  Supervised
+  segment              500     catboost                  Supervised
+  spambase             50      vime                      Neural SSL
+  spambase             100     random_forest             Supervised
+  spambase             250     sslae                     Neural SSL
+  spambase             500     catboost                  Supervised
+  phoneme              50      rpl_lite_xgboost          RPL/pseudo-label
+  phoneme              500     self_training_lightgbm    Self-training
+  satimage             50-250  label_spreading           Graph SSL
+  satimage             500     label_propagation         Graph SSL
+  bank-marketing       250     self_training_lightgbm    Self-training
+  bank-marketing       500     self_training_lightgbm    Self-training
+  adult                250     sslae                     Neural SSL
+  adult                500     self_training_lr          Self-training
+  jannis               50      rpl_lite_xgboost          RPL/pseudo-label
+  jannis               500     self_training_lightgbm    Self-training
+  electricity          50      catboost                  Supervised
+  MagicTelescope       500     rpl_lite_xgboost          RPL/pseudo-label
+
+  Outright winner counts across 40 cells:
+    Self-training:     16
+    Supervised:        12
+    RPL/pseudo-label:   5
+    Graph SSL:          4
+    Neural SSL:         3
+
+  Most frequent single winners:
+    self_training_lightgbm: 9 cells
+    catboost:               5 cells
+
+
+--------------------------------------------------------------------------------
+8.3 SSL vs supervised (matched-seed deltas)
+--------------------------------------------------------------------------------
+
+  Compared SSL methods against their natural supervised backbone on same seed:
+    self_training_lr       vs logistic_regression
+    rpl_lr                 vs logistic_regression
+    self_training_xgboost  vs xgboost
+    rpl_lite_xgboost       vs xgboost
+    self_training_lightgbm vs lightgbm
+    self_training_catboost vs catboost
+
+  Overall (240 matched pairs):
+    Positive deltas: 108
+    Negative deltas: 124
+    Exactly zero:      8
+
+  Mean delta balanced accuracy by SSL method:
+    self_training_lightgbm:  +0.012  (best SSL delta)
+    self_training_lr:        +0.007
+    self_training_xgboost:   +0.005
+    rpl_lite_xgboost:        +0.005
+    self_training_catboost:  -0.009
+    rpl_lr:                  -0.017  (worst)
+
+  By budget (pooled SSL methods):
+    50 labels:   -0.005  (SSL slightly negative)
+    100 labels:  -0.002
+    250 labels:  +0.004  (SSL slightly positive)
+    500 labels:  +0.004
+
+  By task type:
+    Binary:      +0.008 mean delta (SSL helps modestly)
+    Multiclass:  -0.012 mean delta (SSL hurts modestly)
+
+  Standout positive case:
+    bank-marketing @ 250: +0.065 delta (imbalanced binary, self-training wins)
+
+
+--------------------------------------------------------------------------------
+8.4 Family-level balanced accuracy by regime
+--------------------------------------------------------------------------------
+
+  By task type:
+                    Binary    Multiclass
+  Supervised        0.707     0.636
+  Graph SSL         0.626     0.646
+  Self-training     0.735     0.656
+  RPL/pseudo-label  0.730     0.655
+  Neural SSL        0.718     0.642
+
+  By dataset size:
+                    Small     Medium    Large
+  Supervised        0.711     0.763     0.616
+  Graph SSL         0.728     0.735     0.530  ← collapses on large data
+  Self-training     0.738     0.774     0.647
+  RPL/pseudo-label  0.743     0.772     0.640
+  Neural SSL        0.714     0.785     0.619
+
+  By label budget (family means):
+                    50        100       250       500
+  Supervised        0.604     0.667     0.708     0.736
+  Self-training     0.613     0.702     0.740     0.759  ← best at 250/500
+  RPL/pseudo-label  0.644     0.690     0.725     0.742
+  Neural SSL        0.629     0.682     0.711     0.729
+  Graph SSL         0.588     0.621     0.645     0.674
+
+
+--------------------------------------------------------------------------------
+8.5 Runtime (mean seconds per successful run, canonical wave)
+--------------------------------------------------------------------------------
+
+  Method                  Mean runtime   Family
+  ----------------------  -------------  ----------------
+  vime                    263.4 s        Neural SSL
+  scarf                   177.3 s        Neural SSL
+  sslae                    57.1 s        Neural SSL
+  rpl_lite_xgboost         20.1 s        RPL/pseudo-label
+  self_training_lightgbm   17.1 s        Self-training
+  self_training_xgboost    13.3 s        Self-training
+  label_propagation        11.1 s        Graph SSL
+  label_spreading          10.9 s        Graph SSL
+  catboost                  5.9 s        Supervised
+  self_training_catboost    5.4 s        Self-training
+  xgboost                   3.5 s        Supervised
+  lightgbm                  3.4 s        Supervised
+  random_forest             2.3 s        Supervised
+  rpl_lr                    1.1 s        RPL/pseudo-label
+  mlp                       0.6 s        Supervised
+  self_training_lr          0.7 s        Self-training
+  logistic_regression       0.4 s        Supervised
+
+  Neural SSL is 30–70× slower than GBDTs without matching accuracy gains.
+
+
+--------------------------------------------------------------------------------
+8.6 Failures (24 total, all failed_graph_ssl_nan)
+--------------------------------------------------------------------------------
+
+  Concentrated at low budgets (50, 100) on large/medium binary datasets:
+
+  adult / label_propagation + label_spreading @ 50, 100, 250  (10 failures)
+  electricity / label_spreading @ 50, 100                     (6 failures)
+  spambase / label_propagation + label_spreading @ 50, 100    (8 failures)
+
+  All non-graph methods completed every cell (204/204 per dataset).
+  Graph SSL retry ladder: [7, 15, 30, 50, 5, 3] neighbors.
+  Nature: numerical instability of k-NN affinity graph at very low label counts,
+  not a general benchmark breakage.
+
+
+--------------------------------------------------------------------------------
+8.7 Key conclusions from the canonical report
+--------------------------------------------------------------------------------
+
+  1. Gradient-boosted trees are the backbone. catboost and XGBoost/LightGBM
+     family (supervised or self-trained) are most reliable across datasets.
+
+  2. SSL benefit is real but narrow and small. Mainly self-training on large
+     imbalanced binary datasets at ≥250 labels (bank-marketing flagship case).
+
+  3. SSL tends to hurt on small multiclass data and at budget=50 labels.
+
+  4. Neural SSL (vime/scarf/sslae) is not competitive on accuracy OR cost
+     in this wave as currently configured.
+
+  5. Graph SSL is bimodal: excellent on satimage, fragile on large binary data.
+
+  6. self_training_lightgbm is the most frequent cell winner (9/40) and has
+     the best mean SSL delta (+0.012).
+
+  7. Dataset identity dominates method choice more than method family.
+
+  8. Results are EXPLORATORY (3 seeds, 10 datasets), not confirmatory.
+
+
+================================================================================
+9. HISTORICAL EXPERIMENT WAVES (CHECKED IN)
+================================================================================
+
+  Wave / raw file                          Description
+  ---------------------------------------  ------------------------------------
+  mini_wave.csv                            Classical 3-dataset mini-wave
+  mini_wave_fixed.csv                      Bugfix rerun of mini_wave
+  mini_wave_fixed_seed0.csv                Seed-0 debug rerun
+  mini_wave_neural.csv                     Neural-only smoke on 3 datasets
+  mini_wave_vime.csv                       VIME-focused runs
+  mini_wave_all_methods.csv                Classical + neural (vime_lite)
+  mini_wave_all_methods_plus_vime.csv       Above + faithful vime added
+  neural_smoke.csv                         Single-method neural smoke test
+  smoke_*.csv                              Various per-method smoke tests
+  low_class_wave_reused_phoneme_spambase   Reused rows for canonical wave
+  low_class_wave_new_*.csv                 8 newly run datasets
+  low_class_wave_paper_methods.csv         CANONICAL combined 2,040-run file
+
+  Key earlier-wave result (mini_wave_all_methods, 612 runs):
+    3 datasets: phoneme, spambase, letter
+    17 methods (includes vime_lite, not faithful vime)
+    603 success, 9 graph-SSL failures
+    Neural wins only 3/12 cells (narrow, caveated)
+    Best neural win: vime_lite on spambase@50 (+0.032 balanced acc)
+
+  Supervisor brief (results/supervisor_brief/supervisor_brief.md):
+    Presentation-oriented summary of first-wave exploratory results
+    Compares faithful vime vs vime_lite on spambase@50
+    vime_lite 0.876 vs faithful vime 0.862 vs best classical 0.845
+
+
+================================================================================
+10. RECOMMENDED ENTRYPOINTS
+================================================================================
+
+  General experiment runner:
+    python -m src.run_benchmark
+
+  Classical mini-wave (PowerShell):
+    scripts/run_mini_wave.ps1
+    scripts/aggregate_mini_wave.ps1
+
+  Aggregation:
+    python -m src.aggregate_results --input <raw.csv> --output_dir <dir>
+
+  Low-class wave workflow:
+    scripts/preflight_low_class_wave.py
+    scripts/filter_reuse_phoneme_spambase.py
+    python -m src.combine_results
+    python -m src.aggregate_results
+    scripts/build_low_class_wave_report.py
+
+  Analysis of mini_wave_all_methods:
+    scripts/analyze_all_methods.py
+
+  Supervisor figures:
+    scripts/make_supervisor_figures.py
+
+  Run health check:
+    python -m src.check_runs --input results/raw/<file>.csv
+
+
+================================================================================
+11. KNOWN GAPS AND LIMITATIONS
+================================================================================
+
+  README.md is PARTIALLY STALE:
+    - Still describes some datasets as excluded from first wave (adult, etc.)
+      but they are already in configs and benchmarked
+    - Frames neural SSL as future work, but it is fully implemented
+
+  No single end-to-end script for the full low-class wave exists; workflow is
+  procedural across multiple scripts.
+
+  vime_lite is implemented but intentionally excluded from canonical paper set.
+  Do not report vime_lite results as "VIME".
+
+  Graph SSL has known NaN instability at low budgets on large binary datasets.
+  24 cells affected in canonical wave; handled with failure-aware ranking.
+
+  Neural SSL may be under-tuned (fixed epoch/architecture budget, CPU defaults).
+  Poor neural showing should be re-checked before treating as final negative.
+
+  Only 3 seeds per cell in canonical wave — most rank differences inside the
+  top pack are within noise.
+
+  10 datasets, OpenML-only — regime coverage is thin (one hard multiclass
+  jannis heavily shapes the "large" bucket).
+
+  Single train/val/test protocol; results may shift under different validation
+  strategies.
+
+  Suggested next steps (from project's own reports):
+    1. Fix graph-SSL NaN handling and re-run affected cells
+    2. Focused deeper run on bank-marketing/adult (more seeds, more budgets)
+    3. Sanity-check neural SSL training budgets before final negative claims
+    4. Add more hard multiclass datasets to balance regime coverage
+
+
+================================================================================
+12. DEPENDENCIES
+================================================================================
+
+  Core (requirements.txt):
+    numpy, pandas, scikit-learn, PyYAML, matplotlib, seaborn, jupyter
+
+  Optional (used in benchmarks, fail cleanly if missing):
+    xgboost, lightgbm, catboost, torch (for neural SSL)
+
+
+================================================================================
+END OF RECAP
+================================================================================

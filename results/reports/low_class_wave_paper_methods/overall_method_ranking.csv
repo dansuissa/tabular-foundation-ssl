@@ -1,0 +1,18 @@
+method,mean_rank,n_cells_ranked,family,mean_balanced_acc_success
+catboost,4.8125,40,Supervised,0.7224738000349197
+rpl_lite_xgboost,6.2375,40,RPL/pseudo-label,0.7161553895461784
+xgboost,6.4,40,Supervised,0.7116822941451065
+self_training_xgboost,6.4625,40,Self-training,0.7164031764568024
+self_training_catboost,6.6875,40,Self-training,0.7139904816907751
+self_training_lightgbm,6.75,40,Self-training,0.6745549177573242
+random_forest,6.8,40,Supervised,0.7110611735472222
+self_training_lr,8.275,40,Self-training,0.7083379426213999
+logistic_regression,8.7125,40,Supervised,0.701765319992631
+lightgbm,9.2625,40,Supervised,0.6625653947261382
+sslae,9.6125,40,Neural SSL,0.6903466932929458
+scarf,10.0625,40,Neural SSL,0.6874457403391308
+vime,10.425,40,Neural SSL,0.6855441711575753
+label_spreading,10.945945945945946,37,Graph SSL,0.6741310510075461
+rpl_lr,11.3,40,RPL/pseudo-label,0.6846373347058354
+label_propagation,13.974358974358974,39,Graph SSL,0.5975827978136459
+mlp,15.775,40,Supervised,0.5625840405149024

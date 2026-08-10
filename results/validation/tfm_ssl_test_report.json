@@ -1,0 +1,140 @@
+{
+  "meta": {
+    "hostname": "dsiuriofir01",
+    "started": "2026-07-22 11:59:19 UTC",
+    "git": "not a git repository / git unavailable",
+    "finished": "2026-07-22 11:59:55 UTC"
+  },
+  "results": [
+    {
+      "name": "git_status",
+      "command": "git status",
+      "returncode": 128,
+      "stdout": "",
+      "stderr": "fatal: not a git repository (or any parent up to mount point /)\nStopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).\n",
+      "elapsed_s": 0.006,
+      "ok": false,
+      "skipped": false
+    },
+    {
+      "name": "formatting",
+      "command": "",
+      "returncode": null,
+      "stdout": "",
+      "stderr": "No ruff/black/pyproject formatter config in repo",
+      "elapsed_s": 0.0,
+      "ok": false,
+      "skipped": true
+    },
+    {
+      "name": "linting_ruff",
+      "command": "",
+      "returncode": null,
+      "stdout": "",
+      "stderr": "No ruff config; installing ad-hoc ruff for informational check only",
+      "elapsed_s": 0.0,
+      "ok": false,
+      "skipped": true
+    },
+    {
+      "name": "ruff_ad_hoc_install",
+      "command": "/private/ofirlin-lab/suissad4/envs/ssl-core/bin/python -m pip install -q ruff",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "elapsed_s": 0.955,
+      "ok": true,
+      "skipped": false
+    },
+    {
+      "name": "ruff_ad_hoc_check",
+      "command": "/private/ofirlin-lab/suissad4/envs/ssl-core/bin/python -m ruff check src tests",
+      "returncode": 1,
+      "stdout": "\n    \u001b[1m\u001b[94m|\u001b[0m\n\u001b[1m\u001b[94m196 |\u001b[0m         X_val_processed=None,\n\u001b[1m\u001b[94m197 |\u001b[0m     ) -> \"_FrozenTFMAdapterBase\":\n\u001b[1m\u001b[94m198 |\u001b[0m         torch = _require_torch()\n    \u001b[1m\u001b[94m|\u001b[0m         \u001b[1m\u001b[91m^^^^^\u001b[0m\n\u001b[1m\u001b[94m199 |\u001b[0m         from src.models.torch_utils import set_global_determinism\n    \u001b[1m\u001b[94m|\u001b[0m\n\u001b[1m\u001b[96mhelp\u001b[0m: \u001b[1mRemove assignment to unused variable `torch`\u001b[0m\n\n\u001b[1m\u001b[91mF841 \u001b[0m\u001b[1mLocal variable `X_pool_f` is assigned to but never used\u001b[0m\n   \u001b[1m\u001b[94m-->\u001b[0m src/models/tfm_adapters.py:234:13\n    \u001b[1m\u001b[94m|\u001b[0m\n\u001b[1m\u001b[94m232 |\u001b[0m         else:\n\u001b[1m\u001b[94m233 |\u001b[0m             X_unlab_f = np.empty((0, X_lab_f.shape[1]), dtype=np.float32)\n\u001b[1m\u001b[94m234 |\u001b[0m             X_pool_f = X_lab_f\n    \u001b[1m\u001b[94m|\u001b[0m             \u001b[1m\u001b[91m^^^^^^^^\u001b[0m\n\u001b[1m\u001b[94m235 |\u001b[0m             has_unlab = False\n    \u001b[1m\u001b[94m|\u001b[0m\n\u001b[1m\u001b[96mhelp\u001b[0m: \u001b[1mRemove assignment to unused variable `X_pool_f`\u001b[0m\n\n\u001b[1m\u001b[91mF401 \u001b[0m[\u001b[1m\u001b[96m*\u001b[0m] \u001b[1m`src.method_capabilities.METHOD_CAPABILITIES` imported but unused\u001b[0m\n  \u001b[1m\u001b[94m-->\u001b[0m src/run_benchmark.py:17:37\n   \u001b[1m\u001b[94m|\u001b[0m\n\u001b[1m\u001b[94m15 |\u001b[0m from src.metrics import compute_metrics, flatten_metrics\n\u001b[1m\u001b[94m16 |\u001b[0m from src.metrics_ext import compute_extended_prob_metrics\n\u001b[1m\u001b[94m17 |\u001b[0m from src.method_capabilities import METHOD_CAPABILITIES, METHOD_GROUPS, get_capabilities\n   \u001b[1m\u001b[94m|\u001b[0m                                     \u001b[1m\u001b[91m^^^^^^^^^^^^^^^^^^^\u001b[0m\n\u001b[1m\u001b[94m18 |\u001b[0m from src.models import run_model, run_model_from_context\n\u001b[1m\u001b[94m19 |\u001b[0m from src.models.neural_ssl import NEURAL_SSL_METHODS, build_neural_ssl_model\n   \u001b[1m\u001b[94m|\u001b[0m\n\u001b[1m\u001b[96mhelp\u001b[0m: \u001b[1mRemove unused import: `src.method_capabilities.METHOD_CAPABILITIES`\u001b[0m\n\n\u001b[1m\u001b[91mF401 \u001b[0m[\u001b[1m\u001b[96m*\u001b[0m] \u001b[1m`src.results_io.manifest.build_result_payload` imported but unused\u001b[0m\n  \u001b[1m\u001b[94m-->\u001b[0m src/run_benchmark.py:25:37\n   \u001b[1m\u001b[94m|\u001b[0m\n\u001b[1m\u001b[94m23 |\u001b[0m from src.models.supervised import build_supervised_model\n\u001b[1m\u001b[94m24 |\u001b[0m from src.models.common import GraphSSLMissingClassesError, GraphSSLNanError\n\u001b[1m\u001b[94m25 |\u001b[0m from src.results_io.manifest import build_result_payload, code_version, config_hash\n   \u001b[1m\u001b[94m|\u001b[0m                                     \u001b[1m\u001b[91m^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\u001b[1m\u001b[94m26 |\u001b[0m from src.results_io.shards import make_run_id, shard_success_exists, write_shard_atomic\n\u001b[1m\u001b[94m27 |\u001b[0m from src.splits import InvalidBudgetError, SplitError, make_ssl_split\n   \u001b[1m\u001b[94m|\u001b[0m\n\u001b[1m\u001b[96mhelp\u001b[0m: \u001b[1mRemove unused import\u001b[0m\n\n\u001b[1m\u001b[91mF401 \u001b[0m[\u001b[1m\u001b[96m*\u001b[0m] \u001b[1m`src.results_io.manifest.code_version` imported but unused\u001b[0m\n  \u001b[1m\u001b[94m-->\u001b[0m src/run_benchmark.py:25:59\n   \u001b[1m\u001b[94m|\u001b[0m\n\u001b[1m\u001b[94m23 |\u001b[0m from src.models.supervised import build_supervised_model\n\u001b[1m\u001b[94m24 |\u001b[0m from src.models.common import GraphSSLMissingClassesError, GraphSSLNanError\n\u001b[1m\u001b[94m25 |\u001b[0m from src.results_io.manifest import build_result_payload, code_version, config_hash\n   \u001b[1m\u001b[94m|\u001b[0m                                                           \u001b[1m\u001b[91m^^^^^^^^^^^^\u001b[0m\n\u001b[1m\u001b[94m26 |\u001b[0m from src.results_io.shards import make_run_id, shard_success_exists, write_shard_atomic\n\u001b[1m\u001b[94m27 |\u001b[0m from src.splits import InvalidBudgetError, SplitError, make_ssl_split\n   \u001b[1m\u001b[94m|\u001b[0m\n\u001b[1m\u001b[96mhelp\u001b[0m: \u001b[1mRemove unused import\u001b[0m\n\n\u001b[1m\u001b[91mF401 \u001b[0m[\u001b[1m\u001b[96m*\u001b[0m] \u001b[1m`src.results_io.manifest.config_hash` imported but unused\u001b[0m\n  \u001b[1m\u001b[94m-->\u001b[0m src/run_benchmark.py:25:73\n   \u001b[1m\u001b[94m|\u001b[0m\n\u001b[1m\u001b[94m23 |\u001b[0m from src.models.supervised import build_supervised_model\n\u001b[1m\u001b[94m24 |\u001b[0m from src.models.common import GraphSSLMissingClassesError, GraphSSLNanError\n\u001b[1m\u001b[94m25 |\u001b[0m from src.results_io.manifest import build_result_payload, code_version, config_hash\n   \u001b[1m\u001b[94m|\u001b[0m                                                                         \u001b[1m\u001b[91m^^^^^^^^^^^\u001b[0m\n\u001b[1m\u001b[94m26 |\u001b[0m from src.results_io.shards import make_run_id, shard_success_exists, write_shard_atomic\n\u001b[1m\u001b[94m27 |\u001b[0m from src.splits import InvalidBudgetError, SplitError, make_ssl_split\n   \u001b[1m\u001b[94m|\u001b[0m\n\u001b[1m\u001b[96mhelp\u001b[0m: \u001b[1mRemove unused import\u001b[0m\n\n\u001b[1m\u001b[91mF401 \u001b[0m[\u001b[1m\u001b[96m*\u001b[0m] \u001b[1m`src.results_io.shards.make_run_id` imported but unused\u001b[0m\n  \u001b[1m\u001b[94m-->\u001b[0m src/run_benchmark.py:26:35\n   \u001b[1m\u001b[94m|\u001b[0m\n\u001b[1m\u001b[94m24 |\u001b[0m from src.models.common import GraphSSLMissingClassesError, GraphSSLNanError\n\u001b[1m\u001b[94m25 |\u001b[0m from src.results_io.manifest import build_result_payload, code_version, config_hash\n\u001b[1m\u001b[94m26 |\u001b[0m from src.results_io.shards import make_run_id, shard_success_exists, write_shard_atomic\n   \u001b[1m\u001b[94m|\u001b[0m                                   \u001b[1m\u001b[91m^^^^^^^^^^^\u001b[0m\n\u001b[1m\u001b[94m27 |\u001b[0m from src.splits import InvalidBudgetError, SplitError, make_ssl_split\n\u001b[1m\u001b[94m28 |\u001b[0m from src.utils import ensure_dir, load_yaml, set_seed, setup_logging\n   \u001b[1m\u001b[94m|\u001b[0m\n\u001b[1m\u001b[96mhelp\u001b[0m: \u001b[1mRemove unused import\u001b[0m\n\n\u001b[1m\u001b[91mF401 \u001b[0m[\u001b[1m\u001b[96m*\u001b[0m] \u001b[1m`src.results_io.shards.shard_success_exists` imported but unused\u001b[0m\n  \u001b[1m\u001b[94m-->\u001b[0m src/run_benchmark.py:26:48\n   \u001b[1m\u001b[94m|\u001b[0m\n\u001b[1m\u001b[94m24 |\u001b[0m from src.models.common import GraphSSLMissingClassesError, GraphSSLNanError\n\u001b[1m\u001b[94m25 |\u001b[0m from src.results_io.manifest import build_result_payload, code_version, config_hash\n\u001b[1m\u001b[94m26 |\u001b[0m from src.results_io.shards import make_run_id, shard_success_exists, write_shard_atomic\n   \u001b[1m\u001b[94m|\u001b[0m                                                \u001b[1m\u001b[91m^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\u001b[1m\u001b[94m27 |\u001b[0m from src.splits import InvalidBudgetError, SplitError, make_ssl_split\n\u001b[1m\u001b[94m28 |\u001b[0m from src.utils import ensure_dir, load_yaml, set_seed, setup_logging\n   \u001b[1m\u001b[94m|\u001b[0m\n\u001b[1m\u001b[96mhelp\u001b[0m: \u001b[1mRemove unused import\u001b[0m\n\n\u001b[1m\u001b[91mF401 \u001b[0m[\u001b[1m\u001b[96m*\u001b[0m] \u001b[1m`src.results_io.shards.write_shard_atomic` imported but unused\u001b[0m\n  \u001b[1m\u001b[94m-->\u001b[0m src/run_benchmark.py:26:70\n   \u001b[1m\u001b[94m|\u001b[0m\n\u001b[1m\u001b[94m24 |\u001b[0m from src.models.common import GraphSSLMissingClassesError, GraphSSLNanError\n\u001b[1m\u001b[94m25 |\u001b[0m from src.results_io.manifest import build_result_payload, code_version, config_hash\n\u001b[1m\u001b[94m26 |\u001b[0m from src.results_io.shards import make_run_id, shard_success_exists, write_shard_atomic\n   \u001b[1m\u001b[94m|\u001b[0m                                                                      \u001b[1m\u001b[91m^^^^^^^^^^^^^^^^^^\u001b[0m\n\u001b[1m\u001b[94m27 |\u001b[0m from src.splits import InvalidBudgetError, SplitError, make_ssl_split\n\u001b[1m\u001b[94m28 |\u001b[0m from src.utils import ensure_dir, load_yaml, set_seed, setup_logging\n   \u001b[1m\u001b[94m|\u001b[0m\n\u001b[1m\u001b[96mhelp\u001b[0m: \u001b[1mRemove unused import\u001b[0m\n\n\u001b[1m\u001b[91mF401 \u001b[0m[\u001b[1m\u001b[96m*\u001b[0m] \u001b[1m`src.run_benchmark.build_model` imported but unused\u001b[0m\n  \u001b[1m\u001b[94m-->\u001b[0m src/run_single.py:14:31\n   \u001b[1m\u001b[94m|\u001b[0m\n\u001b[1m\u001b[94m12 |\u001b[0m from src.results_io.manifest import build_result_payload, code_version, config_hash\n\u001b[1m\u001b[94m13 |\u001b[0m from src.results_io.shards import make_run_id, shard_success_exists, write_shard_atomic\n\u001b[1m\u001b[94m14 |\u001b[0m from src.run_benchmark import build_model, resolve_neural_params, run_single_experiment\n   \u001b[1m\u001b[94m|\u001b[0m                               \u001b[1m\u001b[91m^^^^^^^^^^^\u001b[0m\n\u001b[1m\u001b[94m15 |\u001b[0m from src.utils import load_yaml, set_seed, setup_logging\n   \u001b[1m\u001b[94m|\u001b[0m\n\u001b[1m\u001b[96mhelp\u001b[0m: \u001b[1mRemove unused import: `src.run_benchmark.build_model`\u001b[0m\n\n\u001b[1m\u001b[91mF841 \u001b[0m\u001b[1mLocal variable `n_cls` is assigned to but never used\u001b[0m\n   \u001b[1m\u001b[94m-->\u001b[0m src/ssl_engine/pseudo_label_engine.py:562:9\n    \u001b[1m\u001b[94m|\u001b[0m\n\u001b[1m\u001b[94m560 |\u001b[0m         labels_c = pseudo_labels[candidate_idx]\n\u001b[1m\u001b[94m561 |\u001b[0m         classes_present = list(dict.fromkeys(labels_c.tolist()))\n\u001b[1m\u001b[94m562 |\u001b[0m         n_cls = max(len(labeled_classes), 1)\n    \u001b[1m\u001b[94m|\u001b[0m         \u001b[1m\u001b[91m^^^^^\u001b[0m\n\u001b[1m\u001b[94m563 |\u001b[0m\n\u001b[1m\u001b[94m564 |\u001b[0m         if require_all_classes:\n    \u001b[1m\u001b[94m|\u001b[0m\n\u001b[1m\u001b[96mhelp\u001b[0m: \u001b[1mRemove assignment to unused variable `n_cls`\u001b[0m\n\nFound 114 errors.\n[\u001b[36m*\u001b[0m] 17 fixable with the `--fix` option (6 hidden fixes can be enabled with the `--unsafe-fixes` option).\n",
+      "stderr": "",
+      "elapsed_s": 0.215,
+      "ok": false,
+      "skipped": false
+    },
+    {
+      "name": "type_checking",
+      "command": "",
+      "returncode": null,
+      "stdout": "",
+      "stderr": "No mypy/pyright configuration present",
+      "elapsed_s": 0.0,
+      "ok": false,
+      "skipped": true
+    },
+    {
+      "name": "unit_tests",
+      "command": "/private/ofirlin-lab/suissad4/envs/ssl-core/bin/python -m pytest tests/ -q --tb=short",
+      "returncode": 0,
+      "stdout": "..s................                                                      [100%]\n18 passed, 1 skipped in 13.78s\n",
+      "stderr": "",
+      "elapsed_s": 15.035,
+      "ok": true,
+      "skipped": false
+    },
+    {
+      "name": "duplicate_method_names",
+      "command": "/private/ofirlin-lab/suissad4/envs/ssl-core/bin/python -c \nimport sys\nfrom pathlib import Path\nsys.path.insert(0, \".\")\nfrom src.models.registry_ext import EXTENDED_METHODS\nfrom src.run_benchmark import METHOD_GROUPS\n# classical names\nfrom src import run_benchmark as rb\nclassical = set()\nfor attr in dir(rb):\n    pass\n# Collect from config\nimport yaml\ncfg = yaml.safe_load(Path(\"configs/benchmark.yaml\").read_text())\nnames = []\nfor k,v in cfg.items():\n    if isinstance(v, list) and k.endswith(\"methods\") or k in {\n        \"methods\",\"full_first_wave_methods\",\"paper_methods_no_vime_lite\",\n        \"tfm_frozen\",\"tfm_ssl_core\",\"modern_ssl\",\"geometric_ssl_ablation\",\n        \"tfm_geometric\",\"transductive_exploratory\",\"all_methods_with_neural\",\n        \"neural_ssl_methods\",\"neural_ssl_experimental_methods\",\"local_debug_methods\",\n    }:\n        names.extend(v)\nnames.extend(EXTENDED_METHODS)\n# duplicates within each group\nfrom collections import Counter\nissues = []\nfor k,v in cfg.items():\n    if isinstance(v, list) and all(isinstance(x,str) for x in v):\n        c = Counter(v)\n        dups = [n for n,cnt in c.items() if cnt>1]\n        if dups:\n            issues.append(f\"{k}: {dups}\")\n# registry vs groups consistency for extended\nprint(\"extended_count\", len(EXTENDED_METHODS))\nprint(\"issues\", issues or \"none\")\nif issues:\n    raise SystemExit(1)\n",
+      "returncode": 0,
+      "stdout": "extended_count 36\nissues none\n",
+      "stderr": "",
+      "elapsed_s": 1.811,
+      "ok": true,
+      "skipped": false
+    },
+    {
+      "name": "config_validation",
+      "command": "/private/ofirlin-lab/suissad4/envs/ssl-core/bin/python -c \nimport sys\nfrom pathlib import Path\nimport yaml\nsys.path.insert(0,'.')\nfrom src.utils import load_yaml\nfrom src.method_capabilities import METHOD_CAPABILITIES, get_capabilities\nfrom src.models.registry_ext import EXTENDED_METHODS\nbc = load_yaml(Path('configs/benchmark.yaml'))\ndc = load_yaml(Path('datasets.yaml') if False else Path('configs/datasets.yaml'))\nassert 'datasets' in dc and 'dataset_groups' in dc\nassert 'low_class_wave' in dc['dataset_groups']\nassert len(dc['dataset_groups']['low_class_wave']) == 10\ngroups = ['tfm_frozen','tfm_ssl_core','modern_ssl','geometric_ssl_ablation']\nfor g in groups:\n    assert g in bc, g\n    for m in bc[g]:\n        caps = get_capabilities(m)\n        assert caps.name == m\n        print(g, m, caps.env, caps.input_view, caps.device)\n# every extended method has capabilities\nmissing = [m for m in EXTENDED_METHODS if m not in METHOD_CAPABILITIES]\nprint('missing_caps', missing)\nif missing:\n    raise SystemExit(1)\nprint('config_ok')\n",
+      "returncode": 0,
+      "stdout": "tfm_frozen tabpfn3 ssl-tfm raw gpu\ntfm_frozen tabiclv2 ssl-tfm raw gpu\ntfm_ssl_core tabpfn3_pl_one_shot ssl-tfm raw gpu\ntfm_ssl_core tabiclv2_pl_one_shot ssl-tfm raw gpu\ntfm_ssl_core tabpfn3_loop_risk ssl-tfm raw gpu\ntfm_ssl_core tabiclv2_loop_risk ssl-tfm raw gpu\ntfm_ssl_core tabpfn3_cast ssl-tfm both gpu\ntfm_ssl_core tabiclv2_cast ssl-tfm both gpu\ntfm_ssl_core tfm_consensus_context_tabiclv2 ssl-tfm raw gpu\ntfm_ssl_core tabpfn3_teacher_catboost ssl-tfm both gpu\ntfm_ssl_core tabiclv2_teacher_catboost ssl-tfm both gpu\ntfm_ssl_core tfm_consensus_catboost ssl-tfm both gpu\nmodern_ssl cast_catboost ssl-core processed any\nmodern_ssl cast_lightgbm ssl-core processed cpu\nmodern_ssl stunt ssl-representation raw gpu\nmodern_ssl seba ssl-representation both gpu\nmodern_ssl d2r2_c ssl-representation processed gpu\ngeometric_ssl_ablation laplacian_linear ssl-representation processed any\ngeometric_ssl_ablation laplacian_mlp ssl-representation processed gpu\ngeometric_ssl_ablation prototype_alignment_ssl ssl-representation processed gpu\ngeometric_ssl_ablation retrieval_attention_ssl ssl-representation processed gpu\ngeometric_ssl_ablation geometric_attention_supervised ssl-representation processed gpu\ngeometric_ssl_ablation geometric_attention_laplacian ssl-representation processed gpu\ngeometric_ssl_ablation geometric_attention_prototype ssl-representation processed gpu\ngeometric_ssl_ablation geometric_attention_retrieval ssl-representation processed gpu\ngeometric_ssl_ablation geometric_attention_ssl ssl-representation processed gpu\nmissing_caps []\nconfig_ok\n",
+      "stderr": "",
+      "elapsed_s": 1.661,
+      "ok": true,
+      "skipped": false
+    },
+    {
+      "name": "deps_core",
+      "command": "/private/ofirlin-lab/suissad4/envs/ssl-core/bin/python -c import numpy,pandas,sklearn,yaml,matplotlib,xgboost,lightgbm,catboost,torch;print('ok', __import__('sys').version.split()[0])",
+      "returncode": 0,
+      "stdout": "ok 3.11.15\n",
+      "stderr": "",
+      "elapsed_s": 3.953,
+      "ok": true,
+      "skipped": false
+    },
+    {
+      "name": "deps_tfm",
+      "command": "/private/ofirlin-lab/suissad4/envs/ssl-tfm/bin/python -c import numpy,pandas,sklearn,yaml,torch,catboost;import tabpfn, tabicl;print('ok', __import__('sys').version.split()[0], 'cuda', torch.cuda.is_available(), 'torch', torch.__version__, 'tabpfn', getattr(tabpfn,'__version__','?'), 'tabicl', getattr(tabicl,'__version__','?'))",
+      "returncode": 0,
+      "stdout": "ok 3.11.15 cuda True torch 2.6.0+cu124 tabpfn 8.1.0 tabicl ?\n",
+      "stderr": "",
+      "elapsed_s": 11.744,
+      "ok": true,
+      "skipped": false
+    },
+    {
+      "name": "reject_artifacts_in_project_tree",
+      "command": "scan project for secrets/checkpoints/openml/env dirs",
+      "returncode": 0,
+      "stdout": "{\n  \"secrets\": [],\n  \"checkpoints\": [],\n  \"openml_data\": [],\n  \"env_dirs\": []\n}",
+      "stderr": "",
+      "elapsed_s": 0.0,
+      "ok": true,
+      "skipped": false
+    },
+    {
+      "name": "git_status",
+      "command": "git status",
+      "returncode": 128,
+      "stdout": "",
+      "stderr": "fatal: not a git repository (or any parent up to mount point /)\nStopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).\n",
+      "elapsed_s": 0.007,
+      "ok": false,
+      "skipped": false
+    }
+  ]
+}

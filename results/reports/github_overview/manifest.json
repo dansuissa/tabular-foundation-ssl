@@ -1,0 +1,37 @@
+{
+  "canonical_rows": 3000,
+  "canonical_methods": 25,
+  "datasets": 10,
+  "label_budgets": [
+    50,
+    100,
+    250,
+    500
+  ],
+  "common_comparison_label_budgets": [
+    50,
+    100,
+    250,
+    500
+  ],
+  "successful_runs": 2976,
+  "preserved_failures": 24,
+  "top_mean_cell_rank_method": "tabiclv2_self_training",
+  "top_mean_cell_rank": 4.0625,
+  "inputs": {
+    "historical_baselines": "results/raw/low_class_wave_paper_methods.csv",
+    "frozen_foundation_models": "results/raw/tfm_frozen_screen.csv",
+    "focused_ssl": "results/raw/focused_tfm_ssl.csv"
+  },
+  "outputs": [
+    "benchmark_coverage.csv",
+    "all_method_summary.csv",
+    "selected_methods_by_budget.csv",
+    "all_methods_by_budget.csv",
+    "all_methods_by_dataset.csv",
+    "project_overview.png",
+    "project_overview.pdf",
+    "complete_method_matrix.png",
+    "complete_method_matrix.pdf"
+  ]
+}

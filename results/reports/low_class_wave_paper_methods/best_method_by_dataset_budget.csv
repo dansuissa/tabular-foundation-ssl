@@ -1,0 +1,41 @@
+dataset,n_labeled,method,mean,family
+jannis,50,rpl_lite_xgboost,0.37092155152952994,RPL/pseudo-label
+jannis,100,rpl_lite_xgboost,0.3976584376550236,RPL/pseudo-label
+jannis,250,self_training_lightgbm,0.4413369353810049,Self-training
+jannis,500,self_training_lightgbm,0.4477648649665075,Self-training
+steel-plates-fault,50,logistic_regression,0.6295294924837531,Supervised
+steel-plates-fault,100,logistic_regression,0.6599676797567358,Supervised
+electricity,50,catboost,0.6957898048502075,Supervised
+bank-marketing,50,self_training_lr,0.7075835717490143,Self-training
+steel-plates-fault,250,xgboost,0.7110170164159304,Supervised
+phoneme,50,rpl_lite_xgboost,0.711785885345269,RPL/pseudo-label
+MagicTelescope,50,self_training_lr,0.7232708634135756,Self-training
+electricity,100,self_training_lightgbm,0.7328702836253171,Self-training
+bank-marketing,100,self_training_lr,0.7331881730039665,Self-training
+adult,50,self_training_lr,0.7387108149082383,Self-training
+phoneme,100,rpl_lite_xgboost,0.7429015200312704,RPL/pseudo-label
+bank-marketing,500,self_training_lightgbm,0.7430944086640081,Self-training
+steel-plates-fault,500,self_training_lightgbm,0.7445530538105727,Self-training
+bank-marketing,250,self_training_lightgbm,0.7454859043756823,Self-training
+adult,100,self_training_lr,0.7493449669475091,Self-training
+MagicTelescope,100,xgboost,0.7593065390355168,Supervised
+adult,250,sslae,0.7593604244305667,Neural SSL
+electricity,250,xgboost,0.7601897845186435,Supervised
+electricity,500,self_training_xgboost,0.771591082748801,Self-training
+adult,500,self_training_lr,0.7727274846466017,Self-training
+phoneme,250,self_training_lightgbm,0.7838339086439735,Self-training
+satimage,50,label_spreading,0.7877195170296765,Graph SSL
+phoneme,500,self_training_lightgbm,0.8000052300967292,Self-training
+MagicTelescope,250,self_training_lightgbm,0.8035916263879342,Self-training
+satimage,100,label_spreading,0.8081924571036257,Graph SSL
+MagicTelescope,500,rpl_lite_xgboost,0.8136179697094233,RPL/pseudo-label
+satimage,250,label_spreading,0.8314496966165215,Graph SSL
+satimage,500,label_propagation,0.8409827960275974,Graph SSL
+segment,50,catboost,0.8463203463203463,Supervised
+spambase,50,vime,0.8616763924681813,Neural SSL
+spambase,100,random_forest,0.8858205713044423,Supervised
+segment,100,random_forest,0.8924963924963926,Supervised
+spambase,250,sslae,0.9108978346515003,Neural SSL
+spambase,500,catboost,0.9359109175824719,Supervised
+segment,250,catboost,0.9444444444444443,Supervised
+segment,500,catboost,0.9595959595959597,Supervised

@@ -1,0 +1,11 @@
+Subject: Tabular foundation-model and SSL experiment — final report
+
+Hi Ofir,
+
+I’m attaching the final report for the tabular foundation-model and focused SSL experiment. We completed the full grid: 240 frozen TabPFN-3/TabICLv2 runs and 720 SSL runs, with no failed or missing final results.
+
+The main finding is that TabPFN-3 and TabICLv2 were the strongest overall methods. Conservative self-training gave only small average gains and usually fell back to the frozen model. Among the trainable SSL approaches, unlabeled retrieval attention performed best; combining attention, Laplacian regularization, and embedding alignment did not improve on attention alone.
+
+The report summarizes the protocol, implementations, main comparisons, diagnostics, and limitations in three pages.
+
+Best,

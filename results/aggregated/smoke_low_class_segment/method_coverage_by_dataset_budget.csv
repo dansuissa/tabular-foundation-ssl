@@ -1,0 +1,9 @@
+dataset,method,n_labeled,n_expected_seeds,n_success_seeds,n_failed_seeds,success_rate,failure_statuses,failure_messages_short
+segment,label_spreading,50,1,1,0,1.0,,
+segment,logistic_regression,50,1,1,0,1.0,,
+segment,random_forest,50,1,1,0,1.0,,
+segment,rpl_lite_xgboost,50,1,1,0,1.0,,
+segment,scarf,50,1,1,0,1.0,,
+segment,self_training_lightgbm,50,1,1,0,1.0,,
+segment,sslae,50,1,1,0,1.0,,
+segment,vime,50,1,1,0,1.0,,

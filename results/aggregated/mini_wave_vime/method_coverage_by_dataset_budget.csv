@@ -1,0 +1,13 @@
+dataset,method,n_labeled,n_expected_seeds,n_success_seeds,n_failed_seeds,success_rate,failure_statuses,failure_messages_short
+letter,vime,50,3,3,0,1.0,,
+letter,vime,100,3,3,0,1.0,,
+letter,vime,250,3,3,0,1.0,,
+letter,vime,500,3,3,0,1.0,,
+phoneme,vime,50,3,3,0,1.0,,
+phoneme,vime,100,3,3,0,1.0,,
+phoneme,vime,250,3,3,0,1.0,,
+phoneme,vime,500,3,3,0,1.0,,
+spambase,vime,50,3,3,0,1.0,,
+spambase,vime,100,3,3,0,1.0,,
+spambase,vime,250,3,3,0,1.0,,
+spambase,vime,500,3,3,0,1.0,,

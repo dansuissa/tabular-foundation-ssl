@@ -1,0 +1,4 @@
+method,runtime_seconds_mean,runtime_seconds_std,runtime_seconds_count
+embedding_alignment_ssl,3.445996875,0.25312333688212574,96
+geometric_attention_ssl,8.298410416666668,2.7425208959518343,96
+unlabeled_attention_ssl,4.329692708333334,1.1268417034717497,96

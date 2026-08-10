@@ -1,0 +1,9 @@
+# Reserved for SeBA / STUNT / Laplacian / D2R2-c if ssl-tfm conflicts.
+# Do NOT create this environment until a real dependency conflict is demonstrated.
+name: ssl-representation
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+# intentionally empty pending phase-4 need

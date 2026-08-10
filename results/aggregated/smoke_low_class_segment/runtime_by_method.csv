@@ -1,0 +1,9 @@
+method,runtime_seconds_mean,runtime_seconds_std,runtime_seconds_count
+label_spreading,7.6291,,1
+logistic_regression,0.0887,,1
+random_forest,0.9817,,1
+rpl_lite_xgboost,14.8445,,1
+scarf,20.8694,,1
+self_training_lightgbm,2.1318,,1
+sslae,13.0624,,1
+vime,12.4731,,1

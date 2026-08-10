@@ -1,0 +1,9 @@
+dataset,method,seed,budget,hint_profile,status,load_s,train_s,total_s,peak_rss_mb,peak_vram_mb,gpu_name,output_bytes,error,suggested_profile,suggested_partition,suggested_gres,suggested_cpus,suggested_mem,suggested_time
+phoneme,logistic_regression,0,50,cpu_light,success,0.031,0.108,0.152,549.3,0.0,NVIDIA A100 80GB PCIe,1869,,cpu_light,cpu192G-48h,,4,16G,1:00:00
+phoneme,sslae,0,50,gpu_representation,success,0.02,3.285,3.323,686.4,0.0,NVIDIA A100 80GB PCIe,1942,,gpu_representation,p_uriofir,gpu:1,8,64G,1:00:00
+phoneme,tabiclv2,0,50,gpu_tfm_small,success,0.018,1.922,1.953,1300.9,355.0,NVIDIA A100 80GB PCIe,2166,,gpu_tfm_small,p_uriofir,gpu:1,8,64G,1:00:00
+segment,laplacian_mlp,0,50,gpu_representation,success,0.019,0.293,0.324,1350.6,8.1,NVIDIA A100 80GB PCIe,2185,,gpu_representation,p_uriofir,gpu:1,8,64G,1:00:00
+segment,geometric_attention_ssl,0,50,gpu_representation,success,0.016,0.403,0.431,1389.6,8.1,NVIDIA A100 80GB PCIe,2200,,gpu_representation,p_uriofir,gpu:1,8,64G,1:00:00
+adult,tabiclv2,0,100,gpu_tfm_large,success,0.118,2.593,2.722,1579.0,3649.3,NVIDIA A100 80GB PCIe,2208,,gpu_tfm_large,p_uriofir,gpu:1,8,96G,4:00:00
+jannis,tabiclv2,0,100,gpu_tfm_large,success,1.619,6.746,8.377,1745.8,19354.0,NVIDIA A100 80GB PCIe,2221,,gpu_tfm_large,p_uriofir,gpu:1,8,96G,4:00:00
+jannis,stunt,0,50,gpu_representation,success,0.921,19.731,20.664,1791.6,614.3,NVIDIA A100 80GB PCIe,1974,,gpu_tfm_large,p_uriofir,gpu:1,8,96G,4:00:00

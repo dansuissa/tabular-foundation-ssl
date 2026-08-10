@@ -1,0 +1,55 @@
+{
+  "time": "2026-07-22T13:00:19.077198+00:00",
+  "results": [
+    {
+      "id": 3,
+      "method": "tabpfn3",
+      "dataset": "phoneme",
+      "status": "status=None",
+      "job_id": "18405539",
+      "validation": {
+        "overall": "status=None",
+        "checks": {
+          "status_success": false,
+          "has_metrics": false,
+          "metric_balanced_accuracy_present": false,
+          "metric_macro_f1_present": false,
+          "metric_log_loss_present": false,
+          "runtime_present": false,
+          "method_match": false,
+          "dataset_match": false,
+          "seed_match": false,
+          "budget_match": false
+        },
+        "error": null,
+        "run_id": null
+      }
+    },
+    {
+      "id": 6,
+      "method": "tabpfn3_loop_risk",
+      "dataset": "phoneme",
+      "status": "success",
+      "job_id": "18408129",
+      "validation": {
+        "overall": "success",
+        "checks": {
+          "status_success": true,
+          "has_metrics": true,
+          "metric_balanced_accuracy_present": true,
+          "metric_macro_f1_present": true,
+          "metric_log_loss_present": true,
+          "runtime_present": true,
+          "method_match": true,
+          "dataset_match": true,
+          "seed_match": true,
+          "budget_match": true,
+          "field_n_unlabeled": true,
+          "field_labeled_classes_present": true
+        },
+        "error": null,
+        "run_id": "phoneme__tabpfn3_loop_risk__s0__n50__e8f5d5f904dd3572"
+      }
+    }
+  ]
+}

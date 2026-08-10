@@ -1,0 +1,153 @@
+{
+  "methods": [
+    {
+      "method": "geometric_attention_supervised",
+      "row": {
+        "status": "exception",
+        "error_message": "cannot import name 'fit_from_views' from 'src.models.legacy_adapter' (/home/dsi/suissad4/projects/ssl-foundation-models/ssl_tabular_benchmark/src/models/legacy_adapter.py)"
+      },
+      "diag": {}
+    },
+    {
+      "method": "geometric_attention_laplacian",
+      "row": {
+        "status": "exception",
+        "error_message": "cannot import name 'fit_from_views' from 'src.models.legacy_adapter' (/home/dsi/suissad4/projects/ssl-foundation-models/ssl_tabular_benchmark/src/models/legacy_adapter.py)"
+      },
+      "diag": {}
+    },
+    {
+      "method": "geometric_attention_prototype",
+      "row": {
+        "status": "exception",
+        "error_message": "cannot import name 'fit_from_views' from 'src.models.legacy_adapter' (/home/dsi/suissad4/projects/ssl-foundation-models/ssl_tabular_benchmark/src/models/legacy_adapter.py)"
+      },
+      "diag": {}
+    },
+    {
+      "method": "geometric_attention_retrieval",
+      "row": {
+        "status": "exception",
+        "error_message": "cannot import name 'fit_from_views' from 'src.models.legacy_adapter' (/home/dsi/suissad4/projects/ssl-foundation-models/ssl_tabular_benchmark/src/models/legacy_adapter.py)"
+      },
+      "diag": {}
+    },
+    {
+      "method": "geometric_attention_ssl",
+      "row": {
+        "status": "exception",
+        "error_message": "cannot import name 'fit_from_views' from 'src.models.legacy_adapter' (/home/dsi/suissad4/projects/ssl-foundation-models/ssl_tabular_benchmark/src/models/legacy_adapter.py)"
+      },
+      "diag": {}
+    },
+    {
+      "method": "laplacian_mlp",
+      "row": {
+        "status": "exception",
+        "error_message": "cannot import name 'fit_from_views' from 'src.models.legacy_adapter' (/home/dsi/suissad4/projects/ssl-foundation-models/ssl_tabular_benchmark/src/models/legacy_adapter.py)"
+      },
+      "diag": {}
+    },
+    {
+      "method": "mlp_control",
+      "row": {
+        "status": "exception",
+        "error_message": "cannot import name 'fit_from_views' from 'src.models.legacy_adapter' (/home/dsi/suissad4/projects/ssl-foundation-models/ssl_tabular_benchmark/src/models/legacy_adapter.py)"
+      },
+      "diag": {}
+    }
+  ],
+  "synthetic_overfit": {
+    "train_acc": 0.9,
+    "pred_hist": {
+      "2": 20,
+      "4": 30,
+      "0": 20,
+      "3": 10,
+      "1": 20
+    },
+    "constant": false,
+    "exceeds_chance": true,
+    "chance": 0.2
+  },
+  "segment_supervised_overfit": {
+    "n_classes_labeled": 7,
+    "labeled_hist": {
+      "4": 6,
+      "0": 6,
+      "2": 6,
+      "1": 5,
+      "3": 6,
+      "6": 5,
+      "5": 6
+    },
+    "train_acc": 0.95,
+    "test_ba_approx": 0.8073593073593074,
+    "pred_hist_test": {
+      "4": 75,
+      "0": 89,
+      "1": 51,
+      "3": 72,
+      "5": 73,
+      "2": 64,
+      "6": 38
+    },
+    "constant_test": false,
+    "loss_tail": [
+      {
+        "sup": 0.24784505367279053,
+        "pl": 0.0,
+        "lap": 0.0,
+        "proto": 0.0,
+        "margin": 0.0,
+        "consistency": 0.0,
+        "ramp": 1.0
+      },
+      {
+        "sup": 0.2348649799823761,
+        "pl": 0.0,
+        "lap": 0.0,
+        "proto": 0.0,
+        "margin": 0.0,
+        "consistency": 0.0,
+        "ramp": 1.0
+      },
+      {
+        "sup": 0.23018869757652283,
+        "pl": 0.0,
+        "lap": 0.0,
+        "proto": 0.0,
+        "margin": 0.0,
+        "consistency": 0.0,
+        "ramp": 1.0
+      },
+      {
+        "sup": 0.22018113732337952,
+        "pl": 0.0,
+        "lap": 0.0,
+        "proto": 0.0,
+        "margin": 0.0,
+        "consistency": 0.0,
+        "ramp": 1.0
+      },
+      {
+        "sup": 0.21153397858142853,
+        "pl": 0.0,
+        "lap": 0.0,
+        "proto": 0.0,
+        "margin": 0.0,
+        "consistency": 0.0,
+        "ramp": 1.0
+      }
+    ],
+    "classes_": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ]
+  }
+}

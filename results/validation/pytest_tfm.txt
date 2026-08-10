@@ -1,0 +1,8 @@
+..s................                                                      [100%]
+=============================== warnings summary ===============================
+../../../../../../private/ofirlin-lab/suissad4/envs/ssl-tfm/lib/python3.11/site-packages/_pytest/cacheprovider.py:469
+  /private/ofirlin-lab/suissad4/envs/ssl-tfm/lib/python3.11/site-packages/_pytest/cacheprovider.py:469: PytestCacheWarning: could not create cache path /home/.pytest_cache/v/cache/nodeids: [Errno 13] Permission denied: '/home/pytest-cache-files-yz0u_bhw'
+    config.cache.set("cache/nodeids", sorted(self.cached_nodeids))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+18 passed, 1 skipped, 1 warning in 18.50s

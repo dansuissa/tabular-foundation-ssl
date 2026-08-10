@@ -1,0 +1,9 @@
+Command:
+/private/ofirlin-lab/suissad4/envs/ssl-tfm/bin/python -m pytest -q
+
+.........s................                                               [100%]
+25 passed, 1 skipped in 27.14s
+
+Run date: 2026-07-30
+Source snapshot:
+b9c1f48daae0a38670909bfcee77dc8488c635820805cd7f3886f35130ed7e69

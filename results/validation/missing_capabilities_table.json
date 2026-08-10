@@ -1,0 +1,62 @@
+[
+  {
+    "method": "d2r2c_inductive",
+    "registry_name": "d2r2c_inductive",
+    "family": "modern_ssl",
+    "protocol": "inductive",
+    "fidelity": "faithful_reimplementation",
+    "env": "ssl-representation",
+    "reason": "Alias of inductive d2r2_c; fully registered.",
+    "missing_dependency_or_impl": "none (alias)",
+    "blocks_phase_a": false,
+    "blocks_phase_b": false,
+    "blocks_phase_c": true,
+    "can_fix_now": "already fixed (capability registered)",
+    "unsupported_status_behavior": "no \u2014 builds D2R2CInductive"
+  },
+  {
+    "method": "d2r2_transductive",
+    "registry_name": "d2r2_transductive",
+    "family": "modern_ssl",
+    "protocol": "transductive",
+    "fidelity": "novel_experimental",
+    "env": "ssl-representation",
+    "reason": "Registered as transductive exploratory; fit raises UnsupportedMethodError unless allow_transductive=True; IP path not enabled.",
+    "missing_dependency_or_impl": "Faithful D2R2 IP implementation",
+    "blocks_phase_a": false,
+    "blocks_phase_b": false,
+    "blocks_phase_c": false,
+    "can_fix_now": "no (by design excluded from inductive ranking)",
+    "unsupported_status_behavior": "yes \u2014 status unsupported_d2r2_ip_not_enabled"
+  },
+  {
+    "method": "tabiclv2_predfeat_laplacian_adapter",
+    "registry_name": "tabiclv2_predfeat_laplacian_adapter",
+    "family": "tfm_geometric",
+    "protocol": "inductive",
+    "fidelity": "novel_experimental",
+    "env": "ssl-tfm",
+    "reason": "Prediction-feature TFM geometric adapter (explicitly NOT embedding). Requires TabICLv2 + geometric stack; embedding probe may fall back to predfeat.",
+    "missing_dependency_or_impl": "ssl-tfm + warmed TabICLv2; geometric modules",
+    "blocks_phase_a": false,
+    "blocks_phase_b": false,
+    "blocks_phase_c": true,
+    "can_fix_now": "already fixed (capability registered)",
+    "unsupported_status_behavior": "no \u2014 builds via build_tfm_adapter"
+  },
+  {
+    "method": "tabiclv2_predfeat_geometric",
+    "registry_name": "tabiclv2_predfeat_geometric",
+    "family": "tfm_geometric",
+    "protocol": "inductive",
+    "fidelity": "novel_experimental",
+    "env": "ssl-tfm",
+    "reason": "Prediction-feature TFM geometric adapter (explicitly NOT embedding). Requires TabICLv2 + geometric stack; embedding probe may fall back to predfeat.",
+    "missing_dependency_or_impl": "ssl-tfm + warmed TabICLv2; geometric modules",
+    "blocks_phase_a": false,
+    "blocks_phase_b": false,
+    "blocks_phase_c": true,
+    "can_fix_now": "already fixed (capability registered)",
+    "unsupported_status_behavior": "no \u2014 builds via build_tfm_adapter"
+  }
+]

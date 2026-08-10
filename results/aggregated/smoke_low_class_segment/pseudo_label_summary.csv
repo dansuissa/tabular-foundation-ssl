@@ -1,0 +1,4 @@
+dataset,method,n_labeled,pseudo_label_fraction,pseudo_label_fraction,pseudo_label_fraction,n_pseudo_added_total,n_pseudo_added_total,n_pseudo_added_total,runtime_seconds,runtime_seconds,runtime_seconds
+,,,mean,std,count,mean,std,count,mean,std,count
+segment,rpl_lite_xgboost,50,0.4883203559510567,,1,878.0,,1,14.8445,,1
+segment,self_training_lightgbm,50,0.0,,1,0.0,,1,2.1318,,1
