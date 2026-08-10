@@ -25,19 +25,18 @@ The builder reads only these immutable inputs:
 - `results/raw/tfm_frozen_screen.csv`
 - `results/raw/focused_tfm_ssl.csv`
 
-It writes `results/reports/github_overview/` and the README image in
-`docs/assets/`. Generated files should have no Git diff when the inputs and
-analysis code are unchanged.
+It writes overview tables and figures directly into
+`results/reports/main_report/`. Generated tables should have no Git diff when
+the inputs and analysis code are unchanged; PNG bytes can vary across operating
+system font-rendering stacks.
 
-To regenerate the detailed final report assets:
+To regenerate the focused-study and historical assets used by the single main
+report:
 
 ```bash
-python scripts/build_bar_ilan_tfm_ssl_final.py
-python scripts/make_three_page_summary_figure.py
+python scripts/build_focused_study_assets.py
+python scripts/build_historical_report_assets.py
 ```
-
-The committed PDF is built with XeLaTeX from
-`results/reports/bar_ilan_tfm_ssl_final/three_page_brief/`.
 
 ## 2. Run a core method locally
 

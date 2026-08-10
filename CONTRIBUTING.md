@@ -24,8 +24,11 @@ but benchmark comparability and provenance take priority over convenience.
 python -m pytest -q
 python scripts/verify_repository.py
 python scripts/build_github_overview.py
-git diff --exit-code results/reports/github_overview docs/assets/project_overview.png
+git diff --exit-code -- results/reports/main_report/tables/overview
 ```
+
+The canonical figures are PNG-only. Review them visually when plotting code
+changes; do not require byte-identical raster output across operating systems.
 
 Any intended change to generated outputs must explain its input wave, grid,
 source hash, and validation status in the pull request. If a run fails, retain

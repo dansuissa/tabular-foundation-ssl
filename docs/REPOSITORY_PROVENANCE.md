@@ -53,11 +53,11 @@ were run from consecutive reviewed implementations:
 - TFM self-training and Laplacian/alignment source:
   `209ec7c85d4342ab6cdc2ad16fd6a5241dcf10f0855f062fc7acb7a054afb4af`
 - Repaired attention/combined source:
-  `b9c1f4dc4c48ac8ea1c4ae3309214620c108b933d3a484f6e7c6dc9d4dc0bb32`
+  `b9c1f48daae0a38670909bfcee77dc8488c635820805cd7f3886f35130ed7e69`
 
 Run manifests, final-gate evidence, method mapping, environment hashes, and
-checkpoint identities are retained under `results/validation/` and
-`results/reports/bar_ilan_tfm_ssl_final/`.
+checkpoint identities are retained under `results/validation/` and the single
+canonical report at `results/reports/main_report/`.
 
 ## What is intentionally not in Git
 

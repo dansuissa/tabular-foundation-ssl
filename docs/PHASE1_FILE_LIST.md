@@ -50,6 +50,7 @@
 
 ## NEVER TOUCH
 - results/raw/low_class_wave_paper_methods.csv
-- results/reports/low_class_wave_paper_methods/**
+- results/reports/main_report/figures/historical/**
+- results/reports/main_report/tables/historical/**
 - results/aggregated/low_class_wave_paper_methods/**
 - other historical results/raw/*.csv waves used as baselines

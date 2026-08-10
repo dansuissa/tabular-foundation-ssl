@@ -1,6 +1,7 @@
-"""Generate presentation-ready figures for the supervisor brief.
+"""Generate legacy first-wave presentation figures for historical comparison.
 
-Reads only existing result files (no model runs).
+Reads only existing result files (no model runs). These figures are not part of
+the canonical 25-method report and are written to ignored temporary output.
 """
 from __future__ import annotations
 
@@ -16,7 +17,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / "results/raw/mini_wave_all_methods_plus_vime.csv"
 AGG = ROOT / "results/aggregated/mini_wave_all_methods_plus_vime"
-OUT = ROOT / "results/supervisor_brief/figures"
+OUT = ROOT / "tmp" / "legacy_supervisor_brief"
 OUT.mkdir(parents=True, exist_ok=True)
 
 BAL = "metric_balanced_accuracy_mean"

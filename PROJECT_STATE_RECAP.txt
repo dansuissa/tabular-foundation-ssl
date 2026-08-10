@@ -1,6 +1,10 @@
 ================================================================================
 SSL TABULAR BENCHMARK — FULL PROJECT STATE RECAP
 ================================================================================
+HISTORICAL NOTE: This file captures the pre-consolidation project state. Report
+paths and builder names below describe that historical layout; the current
+canonical report is results/reports/main_report/README.md.
+
 Generated: 2026-07-22
 Project path: projects/ssl-foundation-models/ssl_tabular_benchmark/
 

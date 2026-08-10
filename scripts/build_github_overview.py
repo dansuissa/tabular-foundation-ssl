@@ -17,7 +17,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import shutil
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -28,8 +27,9 @@ from matplotlib.ticker import NullFormatter
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW_DIR = ROOT / "results" / "raw"
-OUTPUT_DIR = ROOT / "results" / "reports" / "github_overview"
-ASSET_DIR = ROOT / "docs" / "assets"
+REPORT_DIR = ROOT / "results" / "reports" / "main_report"
+OUTPUT_DIR = REPORT_DIR / "tables" / "overview"
+FIGURE_DIR = REPORT_DIR / "figures" / "overview"
 
 CANONICAL_INPUTS = {
     "historical_baselines": RAW_DIR / "low_class_wave_paper_methods.csv",
@@ -139,9 +139,9 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", type=Path, default=OUTPUT_DIR)
     parser.add_argument(
-        "--no-copy-readme-asset",
-        action="store_true",
-        help="Do not copy the overview PNG into docs/assets.",
+        "--figure-dir",
+        type=Path,
+        help="Figure destination; defaults to the canonical main-report figure directory.",
     )
     return parser.parse_args()
 
@@ -425,7 +425,7 @@ def plot_overview(
     budget: pd.DataFrame,
     combined: pd.DataFrame,
     output_dir: Path,
-) -> tuple[Path, Path]:
+) -> Path:
     """Render one readable composite rather than a gallery of redundant plots."""
     plt.rcParams.update(
         {
@@ -541,20 +541,9 @@ def plot_overview(
     )
 
     png_path = output_dir / "project_overview.png"
-    pdf_path = output_dir / "project_overview.pdf"
     fig.savefig(png_path, dpi=220, bbox_inches="tight", facecolor="white")
-    fig.savefig(
-        pdf_path,
-        bbox_inches="tight",
-        facecolor="white",
-        metadata={
-            "Creator": "tabular-foundation-ssl",
-            "CreationDate": None,
-            "ModDate": None,
-        },
-    )
     plt.close(fig)
-    return png_path, pdf_path
+    return png_path
 
 
 def plot_complete_method_matrix(
@@ -562,7 +551,7 @@ def plot_complete_method_matrix(
     by_budget: pd.DataFrame,
     by_dataset: pd.DataFrame,
     output_dir: Path,
-) -> tuple[Path, Path]:
+) -> Path:
     """Plot every canonical method across every budget and every dataset."""
     method_order = summary.sort_values("overall_rank")["method"].tolist()
     labels = [DISPLAY_NAMES[method] for method in method_order]
@@ -699,26 +688,21 @@ def plot_complete_method_matrix(
     )
 
     png_path = output_dir / "complete_method_matrix.png"
-    pdf_path = output_dir / "complete_method_matrix.pdf"
     fig.savefig(png_path, dpi=220, bbox_inches="tight", facecolor="white")
-    fig.savefig(
-        pdf_path,
-        bbox_inches="tight",
-        facecolor="white",
-        metadata={
-            "Creator": "tabular-foundation-ssl",
-            "CreationDate": None,
-            "ModDate": None,
-        },
-    )
     plt.close(fig)
-    return png_path, pdf_path
+    return png_path
 
 
 def main() -> None:
     args = parse_args()
     output_dir = args.output_dir.resolve()
+    figure_dir = (
+        args.figure_dir.resolve()
+        if args.figure_dir is not None
+        else (FIGURE_DIR.resolve() if output_dir == OUTPUT_DIR.resolve() else output_dir)
+    )
     output_dir.mkdir(parents=True, exist_ok=True)
+    figure_dir.mkdir(parents=True, exist_ok=True)
 
     combined, coverage = load_and_validate()
     summary = build_method_summary(combined)
@@ -731,12 +715,12 @@ def main() -> None:
     all_budget.to_csv(output_dir / "all_methods_by_budget.csv", index=False)
     all_dataset.to_csv(output_dir / "all_methods_by_dataset.csv", index=False)
 
-    png_path, pdf_path = plot_overview(summary, budget, combined, output_dir)
-    matrix_png, matrix_pdf = plot_complete_method_matrix(
+    png_path = plot_overview(summary, budget, combined, figure_dir)
+    matrix_png = plot_complete_method_matrix(
         summary,
         all_budget,
         all_dataset,
-        output_dir,
+        figure_dir,
     )
     top = summary.iloc[0]
     manifest = {
@@ -760,19 +744,12 @@ def main() -> None:
             "all_methods_by_budget.csv",
             "all_methods_by_dataset.csv",
             png_path.name,
-            pdf_path.name,
             matrix_png.name,
-            matrix_pdf.name,
         ],
     }
     (output_dir / "manifest.json").write_text(
         json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
     )
-
-    if not args.no_copy_readme_asset:
-        ASSET_DIR.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(png_path, ASSET_DIR / "project_overview.png")
-        shutil.copy2(matrix_png, ASSET_DIR / "complete_method_matrix.png")
 
     print(json.dumps(manifest, indent=2))
 

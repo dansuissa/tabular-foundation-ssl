@@ -12,14 +12,14 @@ and the final supervisor-ready report.
 > failures in the historical wave are retained transparently rather than
 > deleted or imputed.
 
-[Read the three-page report](results/reports/bar_ilan_tfm_ssl_final/three_page_brief/tabular_foundation_models_report.pdf)
+[Read the comprehensive report](results/reports/main_report/README.md)
 · [Detailed results](docs/RESULTS.md)
 · [Method definitions](docs/METHODS.md)
 · [Architecture](docs/ARCHITECTURE.md)
 · [Reproduction guide](docs/REPRODUCIBILITY.md)
 · [References](docs/REFERENCES.md)
 
-![Complete 25-method benchmark overview](docs/assets/project_overview.png)
+![Complete 25-method benchmark overview](results/reports/main_report/figures/overview/project_overview.png)
 
 The left panel ranks every evaluated method within each of the 40 shared
 dataset × budget cells and then averages those ranks, giving each benchmark
@@ -28,7 +28,7 @@ successful rank. Balanced accuracy is the primary metric throughout.
 
 ## Every method, budget, and dataset
 
-![All 25 methods compared across every label budget and dataset](docs/assets/complete_method_matrix.png)
+![All 25 methods compared across every label budget and dataset](results/reports/main_report/figures/overview/complete_method_matrix.png)
 
 This matrix is the exhaustive visual comparison. Every one of the 25 canonical
 methods appears once, ordered by the complete-grid ranking. Panel A reports mean
@@ -36,8 +36,8 @@ balanced accuracy at all four label budgets; a dagger marks incomplete
 historical graph-SSL coverage. Panel B shows the method's mean rank on every
 dataset, averaged over the four budgets, with failed cells assigned rank 26.
 The exact plotted values are available in
-[`all_methods_by_budget.csv`](results/reports/github_overview/all_methods_by_budget.csv)
-and [`all_methods_by_dataset.csv`](results/reports/github_overview/all_methods_by_dataset.csv).
+[`all_methods_by_budget.csv`](results/reports/main_report/tables/overview/all_methods_by_budget.csv)
+and [`all_methods_by_dataset.csv`](results/reports/main_report/tables/overview/all_methods_by_dataset.csv).
 
 ## Main findings
 
@@ -62,7 +62,7 @@ and [`all_methods_by_dataset.csv`](results/reports/github_overview/all_methods_b
 Mean balanced accuracy is computed from successful runs. Mean cell rank is the
 failure-aware, equal-cell-weight comparison described above. The machine-readable
 table also contains coverage, runtime, dispersion, and failure counts:
-[`all_method_summary.csv`](results/reports/github_overview/all_method_summary.csv).
+[`all_method_summary.csv`](results/reports/main_report/tables/overview/all_method_summary.csv).
 
 | Rank | Method | Family | Mean BA | Mean cell rank ↓ | Successful runs |
 |---:|---|---|---:|---:|---:|
@@ -151,7 +151,7 @@ scripts/                         analysis and report builders
 tests/                           leakage, parity, integration, and contract tests
 results/raw/                     canonical per-run CSVs and preserved diagnostics
 results/aggregated/              per-wave summaries, rankings, and plots
-results/reports/                 final reports, publication figures, and tables
+results/reports/main_report/     the single report, canonical figures, and tables
 results/validation/              gates, audits, manifests, and captured test output
 docs/                            protocol, methods, results, provenance, and runbooks
 ```

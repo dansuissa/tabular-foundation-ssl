@@ -63,7 +63,7 @@ Historical low-class wave assembly (procedural, no single launcher):
 2. Reuse phoneme/spambase via `scripts/filter_reuse_phoneme_spambase.py`
 3. Per-dataset new raw CSVs
 4. `src/combine_results.py` (rejects duplicate keys)
-5. Aggregate + `scripts/build_low_class_wave_report.py`
+5. Aggregate + `scripts/build_historical_report_assets.py`
 
 ---
 
@@ -230,7 +230,7 @@ From `configs/datasets.yaml`: 15 datasets configured; group `low_class_wave` = 1
 
 **Tests:** none found.
 
-**Scripts:** `run_mini_wave.ps1`, `aggregate_mini_wave.ps1`, `preflight_low_class_wave.py`, `filter_reuse_phoneme_spambase.py`, `build_low_class_wave_report.py`, `analyze_all_methods.py`, `make_supervisor_figures.py`.
+**Scripts:** `run_mini_wave.ps1`, `aggregate_mini_wave.ps1`, `preflight_low_class_wave.py`, `filter_reuse_phoneme_spambase.py`, `build_historical_report_assets.py`, and `analyze_all_methods.py`. The old supervisor presentation builder is retained only as a legacy generator that writes ignored temporary output.
 
 **Optional deps:** lazy import with install hint for xgboost/lightgbm/catboost; torch lazy via `require_torch()`.
 

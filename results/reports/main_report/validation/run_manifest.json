@@ -1,0 +1,83 @@
+{
+  "status": "complete",
+  "canonical_report": "results/reports/main_report/README.md",
+  "canonical_counts": {
+    "rows": 3000,
+    "methods": 25,
+    "datasets": 10,
+    "label_budgets": 4,
+    "seeds": 3,
+    "successful_runs": 2976,
+    "preserved_failures": 24
+  },
+  "canonical_inputs": {
+    "results/raw/low_class_wave_paper_methods.csv": "b017a950054a5045a4a39c41362d3dc3eef56603d1db4d62d4ffbfbdc43e8ad5",
+    "results/raw/tfm_frozen_screen.csv": "05f11ac7e5da98ce783b41bd46331b4d55fddc6d339136b625c72a4a2eae0d02",
+    "results/raw/focused_tfm_ssl.csv": "0a3bca9fc2728dabf7ac846a7a477c64ac5536feb582f28c92a2594d50b06a9a"
+  },
+  "source_tree_hashes_in_phase_c": [
+    "209ec7c85d4342ab6cdc2ad16fd6a5241dcf10f0855f062fc7acb7a054afb4af",
+    "b9c1f48daae0a38670909bfcee77dc8488c635820805cd7f3886f35130ed7e69"
+  ],
+  "scheduler": {
+    "type": "Slurm",
+    "final_phase_c_array_jobs": [
+      "18895315",
+      "18895316"
+    ],
+    "per_run_job_ids": "Retained in the canonical CSV rows"
+  },
+  "generation_environment": {
+    "python": "3.11.15",
+    "platform": "Linux 5.14.0 x86_64 with glibc 2.34",
+    "hostname": "dsiuriofir01",
+    "pandas": "3.0.3",
+    "numpy": "2.4.6",
+    "matplotlib": "3.11.1"
+  },
+  "checkpoints": {
+    "tabpfn3": {
+      "name": "tabpfn-v3-classifier-v3_default.ckpt",
+      "sha256": "d0d865d54dfbc524f5703104be90620182dca7e5fb2c16de72e9959ea18f3988"
+    },
+    "tabiclv2": {
+      "name": "tabicl-classifier-v2-20260212.ckpt"
+    }
+  },
+  "supporting_input_hashes": {
+    "results/raw/attention_family_final_gate.csv": "80459986ae77e3aba01a92331b118058b924b1b730a3c11083cd2ffa4f573ebd",
+    "configs/benchmark.yaml": "85c245562238619acd3bf391ffdc385e432b99b6887129dc61933d4f9c25d262",
+    "configs/datasets.yaml": "85fd172596b394209b74bc6f4c452412aad65798213a2eb1a4cc90933fef8a71"
+  },
+  "report_structure": {
+    "markdown_reports": 1,
+    "png_figures": 16,
+    "pdf_reports_or_figures": 0,
+    "csv_tables": 26,
+    "overview_figures": 2,
+    "focused_ssl_figures": 7,
+    "historical_figures": 7
+  },
+  "builders": [
+    "scripts/build_github_overview.py",
+    "scripts/build_focused_study_assets.py",
+    "scripts/build_historical_report_assets.py"
+  ],
+  "validation": {
+    "phase_integrity": "results/reports/main_report/validation/integrity_validation.json",
+    "repository_verifier": "scripts/verify_repository.py",
+    "historical_failures_are_preserved": true,
+    "canonical_inputs_modified": false
+  },
+  "known_unavailable_fields": [
+    "CPU RAM per run",
+    "consistent post-training pseudo-label accuracy",
+    "neighbor-label purity",
+    "full-grid final-hash supervised encoder/labeled-memory control"
+  ],
+  "notes": [
+    "The report is consolidated from the reviewed historical, frozen-TFM, and focused-SSL analyses.",
+    "PNG is the canonical figure format because rendered PDF and PNG bytes vary across platform font stacks.",
+    "Removed derived reports remain recoverable from Git history."
+  ]
+}

@@ -1,10 +1,10 @@
 # Results
 
 This page is the repository-level guide to the complete result record. The
-[three-page PDF](../results/reports/bar_ilan_tfm_ssl_final/three_page_brief/tabular_foundation_models_report.pdf)
-is the concise scientific summary; the
-[full report](../results/reports/bar_ilan_tfm_ssl_final/final_report.md) contains
-the detailed diagnostics, paired contrasts, limitations, and deliverable index.
+[comprehensive main report](../results/reports/main_report/README.md) is the
+single scientific report and contains the overview, historical benchmark,
+focused-study diagnostics, paired contrasts, limitations, figures, and
+deliverable index.
 
 ## Scope and integrity
 
@@ -25,7 +25,7 @@ Balanced accuracy is averaged over seeds within each dataset × budget cell.
 Methods are ranked inside each of the 40 cells and ranks are then averaged, so
 large datasets cannot dominate the summary. Missing/failed method cells receive
 rank 26. The complete 25-row result is
-[`all_method_summary.csv`](../results/reports/github_overview/all_method_summary.csv).
+[`all_method_summary.csv`](../results/reports/main_report/tables/overview/all_method_summary.csv).
 
 The first five methods are:
 
@@ -89,17 +89,14 @@ neighbors. No final run has validation/test examples in memory.
 
 ## Figures and tables
 
-The overview used in the main README is available as
-[PNG](../results/reports/github_overview/project_overview.png) and
-[PDF](../results/reports/github_overview/project_overview.pdf). The
-[complete all-method matrix](../results/reports/github_overview/complete_method_matrix.png)
-is also available as a
-[vector PDF](../results/reports/github_overview/complete_method_matrix.pdf),
-with exact values in `all_methods_by_budget.csv` and
-`all_methods_by_dataset.csv`. It includes all 25 methods, four budgets, and ten
-datasets without selecting a subset.
+The overview used in the main README is retained once as
+[PNG](../results/reports/main_report/figures/overview/project_overview.png). The
+[complete all-method matrix](../results/reports/main_report/figures/overview/complete_method_matrix.png)
+has exact values in `tables/overview/all_methods_by_budget.csv` and
+`tables/overview/all_methods_by_dataset.csv`. It includes all 25 methods, four
+budgets, and ten datasets without selecting a subset.
 
-The focused report contains seven publication figures in both formats:
+The focused section contains seven canonical PNG figures:
 
 1. requested methods by label budget;
 2. focused-method ranking;
@@ -110,7 +107,7 @@ The focused report contains seven publication figures in both formats:
 7. method diagnostics.
 
 Their machine-readable sources, including seed-level paired tables, are in
-[`results/reports/bar_ilan_tfm_ssl_final/tables/`](../results/reports/bar_ilan_tfm_ssl_final/tables/).
+[`tables/focused_ssl/`](../results/reports/main_report/tables/focused_ssl/).
 
 ## Limits on interpretation
 

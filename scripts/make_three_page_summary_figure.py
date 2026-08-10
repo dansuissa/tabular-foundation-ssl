@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create the single summary figure used in the three-page TFM/SSL brief."""
+"""Recreate the retired three-page summary figure in ignored temporary output."""
 from pathlib import Path
 
 import matplotlib
@@ -11,8 +11,8 @@ import pandas as pd
 
 
 ROOT = Path(__file__).resolve().parents[1]
-TABLES = ROOT / "results/reports/bar_ilan_tfm_ssl_final/tables"
-OUT = ROOT / "results/reports/bar_ilan_tfm_ssl_final/three_page_brief"
+TABLES = ROOT / "results/reports/main_report/tables/focused_ssl"
+OUT = ROOT / "tmp" / "legacy_three_page_brief"
 OUT.mkdir(parents=True, exist_ok=True)
 
 DISPLAY = {

@@ -1,4 +1,0 @@
-method,metric_macro_f1
-tabiclv2_self_training,0.5795705228898147
-tabpfn3_self_training,0.5634996353048177
-laplacian_ssl,0.4546630191865684

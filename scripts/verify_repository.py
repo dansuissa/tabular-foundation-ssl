@@ -93,18 +93,17 @@ REQUIRED_ASSETS = (
     "docs/RESULTS.md",
     "docs/REPRODUCIBILITY.md",
     "docs/REPOSITORY_PROVENANCE.md",
-    "docs/assets/project_overview.png",
-    "docs/assets/complete_method_matrix.png",
-    "results/reports/github_overview/all_method_summary.csv",
-    "results/reports/github_overview/all_methods_by_budget.csv",
-    "results/reports/github_overview/all_methods_by_dataset.csv",
-    "results/reports/github_overview/project_overview.pdf",
-    "results/reports/github_overview/complete_method_matrix.pdf",
-    "results/reports/bar_ilan_tfm_ssl_final/final_report.md",
-    "results/reports/bar_ilan_tfm_ssl_final/three_page_brief/tabular_foundation_models_report.pdf",
+    "results/reports/main_report/README.md",
+    "results/reports/main_report/figures/overview/project_overview.png",
+    "results/reports/main_report/figures/overview/complete_method_matrix.png",
+    "results/reports/main_report/tables/overview/all_method_summary.csv",
+    "results/reports/main_report/tables/overview/all_methods_by_budget.csv",
+    "results/reports/main_report/tables/overview/all_methods_by_dataset.csv",
+    "results/reports/main_report/validation/integrity_validation.json",
+    "results/reports/main_report/validation/run_manifest.json",
 )
 
-MARKDOWN_LINK = re.compile(r"(?<!!)\[[^]]*]\(([^)]+)\)")
+MARKDOWN_LINK = re.compile(r"!?\[[^]]*]\(([^)]+)\)")
 SECRET_PATTERNS = {
     "GitHub token": re.compile(r"\bgh[pousr]_[A-Za-z0-9]{20,}\b"),
     "OpenAI key": re.compile(r"\bsk-[A-Za-z0-9_-]{20,}\b"),
@@ -252,12 +251,28 @@ def check_documentation_contract(errors: list[str]) -> None:
         extra = sorted(set(ranking_methods) - EXPECTED_METHODS)
         errors.append(f"README method coverage mismatch: missing={missing}, extra={extra}")
 
-    report_sources = (
-        ROOT / "results/reports/bar_ilan_tfm_ssl_final/final_report.md",
-        ROOT
-        / "results/reports/bar_ilan_tfm_ssl_final/three_page_brief/"
-        "tabular_foundation_models_report.tex",
+    report_root = ROOT / "results/reports"
+    report_directories = sorted(path.name for path in report_root.iterdir() if path.is_dir())
+    if report_directories != ["main_report"]:
+        errors.append(
+            "results/reports must contain only main_report; found "
+            f"{report_directories}"
+        )
+
+    report_markdown = sorted(
+        path.relative_to(report_root).as_posix() for path in report_root.rglob("*.md")
     )
+    if report_markdown != ["main_report/README.md"]:
+        errors.append(
+            "main_report/README.md must be the only report document; found "
+            f"{report_markdown}"
+        )
+
+    report_pdfs = sorted(path.relative_to(report_root).as_posix() for path in report_root.rglob("*.pdf"))
+    if report_pdfs:
+        errors.append(f"report PDF duplicates are not allowed: {report_pdfs}")
+
+    report_sources = (report_root / "main_report/README.md",)
     for path in report_sources:
         if "ofir lindenbaum" in path.read_text(encoding="utf-8").lower():
             errors.append(f"supervisor name appears inside report source: {path}")
@@ -279,8 +294,8 @@ def check_code_documentation(errors: list[str]) -> None:
 def check_figure_dimensions(errors: list[str]) -> None:
     """Reject accidentally tiny or corrupt README PNG exports."""
     minimums = {
-        "docs/assets/project_overview.png": (2400, 1500),
-        "docs/assets/complete_method_matrix.png": (3000, 2000),
+        "results/reports/main_report/figures/overview/project_overview.png": (2400, 1500),
+        "results/reports/main_report/figures/overview/complete_method_matrix.png": (3000, 2000),
     }
     for relative, (minimum_width, minimum_height) in minimums.items():
         path = ROOT / relative

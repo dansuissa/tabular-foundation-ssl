@@ -42,9 +42,9 @@ jobs:
         # have the intended dimensions; compare deterministic report data here.
         run: |
           git diff --exit-code -- \
-            results/reports/github_overview/benchmark_coverage.csv \
-            results/reports/github_overview/all_method_summary.csv \
-            results/reports/github_overview/selected_methods_by_budget.csv \
-            results/reports/github_overview/all_methods_by_budget.csv \
-            results/reports/github_overview/all_methods_by_dataset.csv \
-            results/reports/github_overview/manifest.json
+            results/reports/main_report/tables/overview/benchmark_coverage.csv \
+            results/reports/main_report/tables/overview/all_method_summary.csv \
+            results/reports/main_report/tables/overview/selected_methods_by_budget.csv \
+            results/reports/main_report/tables/overview/all_methods_by_budget.csv \
+            results/reports/main_report/tables/overview/all_methods_by_dataset.csv \
+            results/reports/main_report/tables/overview/manifest.json

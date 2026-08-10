@@ -15,7 +15,7 @@ them.
 
 Together they define the 25-method, 3,000-row project result. Analyses making a
 “whole project” claim must begin with exactly these files or with the generated
-`reports/github_overview/` tables.
+`reports/main_report/tables/overview/` tables.
 
 ## Directory roles
 
@@ -23,11 +23,9 @@ Together they define the 25-method, 3,000-row project result. Analyses making a
   Intermediate files are evidence, not inputs to the final comparison.
 - `aggregated/` contains wave-specific descriptive summaries, rankings, and
   plots produced by the standard aggregation pipeline.
-- `reports/bar_ilan_tfm_ssl_final/` is the validated final focused-study report,
-  with 18 machine-readable tables, seven figures in PNG/PDF, a full Markdown
-  analysis, manifest, integrity audit, and three-page PDF.
-- `reports/github_overview/` is the repository-level 25-method summary generated
-  by `scripts/build_github_overview.py`.
+- `reports/main_report/` is the only report. It consolidates the complete
+  25-method overview, focused-study analysis, historical findings, canonical
+  PNG figures, machine-readable tables, and report validation metadata.
 - `validation/` retains audits, gates, failure diagnoses, test output, source
   hashes, method mapping, and submission manifests.
 

@@ -188,7 +188,7 @@ Pass external validation into methods with `needs_external_validation=True` with
 **Never modify:**
 
 - `results/raw/low_class_wave_paper_methods.csv`
-- any file under `results/reports/low_class_wave_paper_methods/`
+- any historical section asset under `results/reports/main_report/`
 - other historical `results/raw/*.csv` / aggregated historical waves (treat as immutable)
 
 ---
