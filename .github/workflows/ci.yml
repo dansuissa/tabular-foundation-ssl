@@ -36,5 +36,15 @@ jobs:
       - name: Rebuild whole-project overview
         run: python scripts/build_github_overview.py
 
-      - name: Confirm generated overview is current
-        run: git diff --exit-code -- results/reports/github_overview docs/assets/project_overview.png docs/assets/complete_method_matrix.png
+      - name: Confirm generated overview data is current
+        # PNG/PDF bytes vary across operating-system font and rendering stacks.
+        # The repository verifier checks that the committed figures exist and
+        # have the intended dimensions; compare deterministic report data here.
+        run: |
+          git diff --exit-code -- \
+            results/reports/github_overview/benchmark_coverage.csv \
+            results/reports/github_overview/all_method_summary.csv \
+            results/reports/github_overview/selected_methods_by_budget.csv \
+            results/reports/github_overview/all_methods_by_budget.csv \
+            results/reports/github_overview/all_methods_by_dataset.csv \
+            results/reports/github_overview/manifest.json
