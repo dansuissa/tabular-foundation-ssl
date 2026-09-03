@@ -1,0 +1,63 @@
+datasets:
+  - name: phoneme
+    openml_id: 1489
+    max_rows: null
+  - name: spambase
+    openml_id: 44
+    max_rows: null
+  - name: letter
+    openml_id: 6
+    max_rows: null
+  - name: MagicTelescope
+    openml_id: 1120
+    max_rows: null
+  - name: adult
+    openml_id: 1590
+    max_rows: null
+  - name: bank-marketing
+    openml_id: 1461
+    max_rows: null
+  - name: electricity
+    openml_id: 151
+    max_rows: null
+  - name: satimage
+    openml_id: 182
+    max_rows: null
+  - name: segment
+    openml_id: 36
+    max_rows: null
+  - name: steel-plates-fault
+    openml_id: 40982
+    max_rows: null
+  - name: jannis
+    openml_id: 41168
+    max_rows: null
+  - name: helena
+    openml_id: 41169
+    max_rows: null
+  - name: miniboone_100k
+    openml_id: 41150
+    max_rows: 100000
+  - name: covertype_100k
+    openml_id: 150
+    max_rows: 100000
+  - name: higgs_100k
+    openml_id: 42769
+    max_rows: 100000
+
+dataset_groups:
+  low_class_wave:
+    - phoneme
+    - spambase
+    - MagicTelescope
+    - adult
+    - bank-marketing
+    - electricity
+    - satimage
+    - segment
+    - steel-plates-fault
+    - jannis
+
+  tfm_smoke:
+    - phoneme
+    - spambase

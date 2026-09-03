@@ -1,0 +1,4 @@
+wave,source_file,rows,methods,datasets,label_budgets,seeds,successful_rows,preserved_failures
+historical_baselines,results/raw/low_class_wave_paper_methods.csv,2040,17,10,4,3,2016,24
+frozen_foundation_models,results/raw/tfm_frozen_screen.csv,240,2,10,4,3,240,0
+focused_ssl,results/raw/focused_tfm_ssl.csv,720,6,10,4,3,720,0

@@ -1,0 +1,101 @@
+method,n_labeled,mean_balanced_accuracy,successful_runs,attempted_runs,display_name,family
+tabiclv2_self_training,50,0.698095427434349,30,30,TabICL v2 + self-training,TFM self-training
+tabiclv2_self_training,100,0.7354750054348482,30,30,TabICL v2 + self-training,TFM self-training
+tabiclv2_self_training,250,0.7646803752617325,30,30,TabICL v2 + self-training,TFM self-training
+tabiclv2_self_training,500,0.7811409925507163,30,30,TabICL v2 + self-training,TFM self-training
+tabiclv2,50,0.6965577351515349,30,30,TabICL v2,frozen TFM
+tabiclv2,100,0.7329925511734119,30,30,TabICL v2,frozen TFM
+tabiclv2,250,0.7631795746606727,30,30,TabICL v2,frozen TFM
+tabiclv2,500,0.7811443717774298,30,30,TabICL v2,frozen TFM
+tabpfn3_self_training,50,0.6915467544229551,30,30,TabPFN-3 + self-training,TFM self-training
+tabpfn3_self_training,100,0.7324120508914496,30,30,TabPFN-3 + self-training,TFM self-training
+tabpfn3_self_training,250,0.7608379435842209,30,30,TabPFN-3 + self-training,TFM self-training
+tabpfn3_self_training,500,0.7791342121807251,30,30,TabPFN-3 + self-training,TFM self-training
+tabpfn3,50,0.6866723504575598,30,30,TabPFN-3,frozen TFM
+tabpfn3,100,0.7298827566578119,30,30,TabPFN-3,frozen TFM
+tabpfn3,250,0.7581310515354621,30,30,TabPFN-3,frozen TFM
+tabpfn3,500,0.7801224462538846,30,30,TabPFN-3,frozen TFM
+catboost,50,0.6732126087519755,30,30,CatBoost,supervised
+catboost,100,0.7084769986103533,30,30,CatBoost,supervised
+catboost,250,0.7427526603254122,30,30,CatBoost,supervised
+catboost,500,0.7654529324519379,30,30,CatBoost,supervised
+rpl_lite_xgboost,50,0.6453614296161093,30,30,RPL-lite XGBoost,robust pseudo-labeling
+rpl_lite_xgboost,100,0.6967353021565705,30,30,RPL-lite XGBoost,robust pseudo-labeling
+rpl_lite_xgboost,250,0.7489566519752232,30,30,RPL-lite XGBoost,robust pseudo-labeling
+rpl_lite_xgboost,500,0.7735681744368105,30,30,RPL-lite XGBoost,robust pseudo-labeling
+self_training_xgboost,50,0.6483815636153458,30,30,Self-training XGBoost,classical self-training
+self_training_xgboost,100,0.6969110030443519,30,30,Self-training XGBoost,classical self-training
+self_training_xgboost,250,0.7471644077043743,30,30,Self-training XGBoost,classical self-training
+self_training_xgboost,500,0.7731557314631374,30,30,Self-training XGBoost,classical self-training
+self_training_catboost,50,0.670233248908458,30,30,Self-training CatBoost,classical self-training
+self_training_catboost,100,0.7008112124685473,30,30,Self-training CatBoost,classical self-training
+self_training_catboost,250,0.7310319803859865,30,30,Self-training CatBoost,classical self-training
+self_training_catboost,500,0.7538854850001088,30,30,Self-training CatBoost,classical self-training
+xgboost,50,0.6494628532327841,30,30,XGBoost,supervised
+xgboost,100,0.6953688773188342,30,30,XGBoost,supervised
+xgboost,250,0.7377226584544841,30,30,XGBoost,supervised
+xgboost,500,0.7641747875743236,30,30,XGBoost,supervised
+self_training_lightgbm,50,0.45825222049771386,30,30,Self-training LightGBM,classical self-training
+self_training_lightgbm,100,0.7021396424144893,30,30,Self-training LightGBM,classical self-training
+self_training_lightgbm,250,0.7586830300709173,30,30,Self-training LightGBM,classical self-training
+self_training_lightgbm,500,0.779144778046176,30,30,Self-training LightGBM,classical self-training
+random_forest,50,0.6605505874187003,30,30,Random forest,supervised
+random_forest,100,0.6990609481073201,30,30,Random forest,supervised
+random_forest,250,0.7310990813593659,30,30,Random forest,supervised
+random_forest,500,0.7535340773035023,30,30,Random forest,supervised
+self_training_lr,50,0.675619649891897,30,30,Self-training LR,classical self-training
+self_training_lr,100,0.7060680155987077,30,30,Self-training LR,classical self-training
+self_training_lr,250,0.7219171808606574,30,30,Self-training LR,classical self-training
+self_training_lr,500,0.7297469241343376,30,30,Self-training LR,classical self-training
+logistic_regression,50,0.6694377657062773,30,30,Logistic regression,supervised
+logistic_regression,100,0.7025860428395009,30,30,Logistic regression,supervised
+logistic_regression,250,0.7140002935651814,30,30,Logistic regression,supervised
+logistic_regression,500,0.7210371778595643,30,30,Logistic regression,supervised
+sslae,50,0.6295931709799628,30,30,SSLAE,neural SSL
+sslae,100,0.6800003599311655,30,30,SSLAE,neural SSL
+sslae,250,0.7227219564172409,30,30,SSLAE,neural SSL
+sslae,500,0.7290712858434143,30,30,SSLAE,neural SSL
+lightgbm,50,0.457534031759604,30,30,LightGBM,supervised
+lightgbm,100,0.6939009910979345,30,30,LightGBM,supervised
+lightgbm,250,0.7373245630871549,30,30,LightGBM,supervised
+lightgbm,500,0.761501992959859,30,30,LightGBM,supervised
+unlabeled_attention_ssl,50,0.5903749818835201,30,30,Unlabeled attention SSL,geometric SSL
+unlabeled_attention_ssl,100,0.6404178792878309,30,30,Unlabeled attention SSL,geometric SSL
+unlabeled_attention_ssl,250,0.6979407864352716,30,30,Unlabeled attention SSL,geometric SSL
+unlabeled_attention_ssl,500,0.7419206287760615,30,30,Unlabeled attention SSL,geometric SSL
+scarf,50,0.6298530272417255,30,30,SCARF,neural SSL
+scarf,100,0.6897299446415632,30,30,SCARF,neural SSL
+scarf,250,0.7033474470862948,30,30,SCARF,neural SSL
+scarf,500,0.7268525423869394,30,30,SCARF,neural SSL
+vime,50,0.6274900002610505,30,30,VIME,neural SSL
+vime,100,0.6752767642237083,30,30,VIME,neural SSL
+vime,250,0.7081816187914006,30,30,VIME,neural SSL
+vime,500,0.7312283013541415,30,30,VIME,neural SSL
+rpl_lr,50,0.643391543995994,30,30,RPL LR,robust pseudo-labeling
+rpl_lr,100,0.6838801622112972,30,30,RPL LR,robust pseudo-labeling
+rpl_lr,250,0.7013037538727952,30,30,RPL LR,robust pseudo-labeling
+rpl_lr,500,0.7099738787432555,30,30,RPL LR,robust pseudo-labeling
+label_spreading,50,0.6326240941036624,22,30,Label spreading,graph SSL
+label_spreading,100,0.6622396392682535,25,30,Label spreading,graph SSL
+label_spreading,250,0.6866290536562546,28,30,Label spreading,graph SSL
+label_spreading,500,0.7028141933810098,30,30,Label spreading,graph SSL
+laplacian_ssl,50,0.5592000661711887,30,30,Laplacian SSL,geometric SSL
+laplacian_ssl,100,0.5706737983098956,30,30,Laplacian SSL,geometric SSL
+laplacian_ssl,250,0.6439710244167098,30,30,Laplacian SSL,geometric SSL
+laplacian_ssl,500,0.6960613075595463,30,30,Laplacian SSL,geometric SSL
+label_propagation,50,0.5490946182552124,25,30,Label propagation,graph SSL
+label_propagation,100,0.5845931355083038,28,30,Label propagation,graph SSL
+label_propagation,250,0.6026516570865185,28,30,Label propagation,graph SSL
+label_propagation,500,0.6453823636093116,30,30,Label propagation,graph SSL
+geometric_attention_ssl,50,0.48173603066105686,30,30,Combined geometric + attention SSL,geometric SSL
+geometric_attention_ssl,100,0.5566362068802901,30,30,Combined geometric + attention SSL,geometric SSL
+geometric_attention_ssl,250,0.645168118899132,30,30,Combined geometric + attention SSL,geometric SSL
+geometric_attention_ssl,500,0.7010964209010311,30,30,Combined geometric + attention SSL,geometric SSL
+embedding_alignment_ssl,50,0.5598535176386348,30,30,Embedding alignment SSL,geometric SSL
+embedding_alignment_ssl,100,0.5866411317532635,30,30,Embedding alignment SSL,geometric SSL
+embedding_alignment_ssl,250,0.5861865051852758,30,30,Embedding alignment SSL,geometric SSL
+embedding_alignment_ssl,500,0.5996346149697774,30,30,Embedding alignment SSL,geometric SSL
+mlp,50,0.5106537434526,30,30,MLP,supervised
+mlp,100,0.504777554410819,30,30,MLP,supervised
+mlp,250,0.5857032800327532,30,30,MLP,supervised
+mlp,500,0.6492015841634375,30,30,MLP,supervised

@@ -1,0 +1,11 @@
+dataset,dataset_id,approx_rows_used,n_features_raw,n_features_processed,n_classes,task,test_size,size_bucket
+steel-plates-fault,40982,1941,27,27,7,multiclass,389,small
+segment,36,2310,19,19,7,multiclass,462,small
+spambase,44,4601,57,57,2,binary,921,medium
+phoneme,1489,5404,5,5,2,binary,1081,medium
+satimage,182,6430,36,36,6,multiclass,1286,medium
+MagicTelescope,1120,19020,10,10,2,binary,3804,large
+bank-marketing,1461,45211,16,51,2,binary,9043,large
+electricity,151,45312,8,14,2,binary,9063,large
+adult,1590,48842,14,108,2,binary,9769,large
+jannis,41168,83733,54,54,4,multiclass,16747,large

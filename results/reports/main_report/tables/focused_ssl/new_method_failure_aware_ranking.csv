@@ -1,0 +1,9 @@
+method,mean_cell_rank,std_cell_rank,cells_ranked,mean_cell_balanced_accuracy,display_name
+tabiclv2,2.4375,1.069312623688455,40,0.7434685581907623,TabICLv2
+tabiclv2_self_training,2.4375,1.093028608253937,40,0.7448479501704115,TabICLv2 self-training
+tabpfn3_self_training,2.7375,1.219433979668121,40,0.7409827402698377,TabPFN-3 self-training
+tabpfn3,2.9125,1.2754461260722934,40,0.7387021512261797,TabPFN-3
+unlabeled_attention_ssl,5.025,1.5104337974271687,40,0.6676635690956709,Unlabeled attention
+laplacian_ssl,6.4,1.0012812305062464,40,0.617476549114335,Laplacian SSL
+geometric_attention_ssl,6.925,0.9644315450710876,40,0.5961591943353775,Combined geometric attention
+embedding_alignment_ssl,7.125,1.1588566425355284,40,0.5830789423867379,Embedding alignment

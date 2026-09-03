@@ -1,0 +1,11 @@
+dataset,openml_dataset_id,n_classes,n_features_raw,n_features_processed,train_labeled_budget_grid,n_unlabeled_at_budget_50,validation_size,test_size
+phoneme,1489,2,5,5,"50, 100, 250, 500",4273,20,1081
+spambase,44,2,57,57,"50, 100, 250, 500",3630,20,921
+MagicTelescope,1120,2,10,10,"50, 100, 250, 500",15166,20,3804
+adult,1590,2,14,108,"50, 100, 250, 500",39023,20,9769
+bank-marketing,1461,2,16,51,"50, 100, 250, 500",36118,20,9043
+electricity,151,2,8,14,"50, 100, 250, 500",36199,20,9063
+satimage,182,6,36,36,"50, 100, 250, 500",5094,20,1286
+segment,36,7,19,19,"50, 100, 250, 500",1798,20,462
+steel-plates-fault,40982,7,27,27,"50, 100, 250, 500",1502,20,389
+jannis,41168,4,54,54,"50, 100, 250, 500",66936,20,16747

@@ -1,0 +1,124 @@
+seeds: [0, 1, 2]
+label_budgets: [50, 100, 250, 500]
+test_size: 0.2
+val_size_from_labeled: 0.2
+use_all_remaining_as_unlabeled: true
+
+metrics:
+  - accuracy
+  - balanced_accuracy
+  - macro_f1
+  - log_loss
+  - roc_auc
+  - average_precision
+
+full_first_wave_methods:
+  - logistic_regression
+  - random_forest
+  - xgboost
+  - lightgbm
+  - catboost
+  - mlp
+  - label_spreading
+  - label_propagation
+  - self_training_lr
+  - self_training_xgboost
+  - self_training_lightgbm
+  - self_training_catboost
+  - rpl_lr
+  - rpl_lite_xgboost
+  - sslae
+  - vime
+  - scarf
+
+methods:
+  - logistic_regression
+  - random_forest
+  - xgboost
+  - lightgbm
+  - catboost
+  - mlp
+  - label_spreading
+  - label_propagation
+  - self_training_lr
+  - self_training_xgboost
+  - self_training_lightgbm
+  - self_training_catboost
+  - rpl_lr
+  - rpl_lite_xgboost
+  - sslae
+  - vime
+  - scarf
+
+tfm_frozen:
+  - tabpfn3
+  - tabiclv2
+
+focused_tfm_ssl:
+  - tabpfn3_self_training
+  - tabiclv2_self_training
+  - laplacian_ssl
+  - unlabeled_attention_ssl
+  - embedding_alignment_ssl
+  - geometric_attention_ssl
+
+canonical_methods:
+  - logistic_regression
+  - random_forest
+  - xgboost
+  - lightgbm
+  - catboost
+  - mlp
+  - label_spreading
+  - label_propagation
+  - self_training_lr
+  - self_training_xgboost
+  - self_training_lightgbm
+  - self_training_catboost
+  - rpl_lr
+  - rpl_lite_xgboost
+  - sslae
+  - vime
+  - scarf
+  - tabpfn3
+  - tabiclv2
+  - tabpfn3_self_training
+  - tabiclv2_self_training
+  - laplacian_ssl
+  - unlabeled_attention_ssl
+  - embedding_alignment_ssl
+  - geometric_attention_ssl
+
+neural_ssl_defaults:
+  batch_size: 256
+  hidden_dim: 128
+  embedding_dim: 64
+  dropout: 0.1
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  max_epochs: 100
+  pretrain_epochs: 50
+  patience: 10
+  device: cpu
+
+sslae:
+  recon_weight: 1.0
+vime:
+  mask_prob: 0.3
+  mask_loss_weight: 1.0
+  feature_loss_weight: 1.0
+  consistency_weight: 0.1
+scarf:
+  corruption_rate: 0.3
+  temperature: 0.1
+
+laplacian_ssl:
+  max_epochs: 20
+  patience: 5
+embedding_alignment_ssl:
+  max_epochs: 20
+unlabeled_attention_ssl:
+  max_epochs: 15
+  k: 8
+geometric_attention_ssl:
+  max_epochs: 20

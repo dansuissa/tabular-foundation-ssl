@@ -1,0 +1,20 @@
+name: tabular-ssl-tfm
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - numpy>=1.24
+  - pandas>=2.0
+  - scipy>=1.10
+  - scikit-learn>=1.3
+  - pyyaml>=6.0
+  - matplotlib>=3.7
+  - tqdm
+  - einops>=0.7
+  - psutil
+  - pip:
+      - catboost>=1.2
+      - huggingface_hub
+      - tabpfn==8.1.0
+      - tabicl==2.1.1

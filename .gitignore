@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Local environments and editors
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
+*.swp
+*~
+
+# Secrets and credentials
+secrets/
+credentials/
+TABPFN_TOKEN
+*_token.txt
+*_credentials.json
+*.pem
+*.key
+.netrc
+
+# Downloaded datasets, caches, and licensed model weights
+data/
+cache/
+caches/
+openml_cache/
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+*.joblib
+
+# Runtime output that is not part of a reviewed result release
+slurm-*.out
+logs/
+results/raw_shards/
+tmp/
+temp/
+build/
+dist/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Notebook metadata
+.ipynb_checkpoints/

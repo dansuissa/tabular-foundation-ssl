@@ -1,0 +1,7 @@
+method,runs,selected_round_mean,pseudo_added_mean,graph_nodes_mean,graph_edges_mean,graph_isolated_mean,graph_build_seconds_mean,attention_entropy_mean,labeled_attention_mass_mean,unlabeled_attention_mass_mean,embedding_variance_mean,effective_embedding_rank_mean,representation_collapse_flags,constant_prediction_flags,memory_leakage_flags
+embedding_alignment_ssl,120,,,,,,,,,,0.01700234682939481,,0,0,0
+geometric_attention_ssl,120,,,20978.9,53273.28333333333,1445.7583333333334,1.693622977511647,1.8982523540300982,0.5533652737736702,0.44621132399909025,0.26288144711676675,32.0,0,21,0
+laplacian_ssl,120,,,20978.9,53273.28333333333,1445.7583333333334,1.6982605668832549,,,,0.1279473976704868,,0,17,0
+tabiclv2_self_training,120,0.4083333333333333,62.025,,,,,,,,,,0,0,0
+tabpfn3_self_training,120,0.39166666666666666,62.4,,,,,,,,,,0,0,0
+unlabeled_attention_ssl,120,,,,,,,,0.03950520833333333,0.9604947916666667,,,0,0,0

@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "canonical_counts": {
+    "rows": 3000,
+    "methods": 25,
+    "datasets": 10,
+    "label_budgets": 4,
+    "seeds": 3,
+    "successful_runs": 2976,
+    "preserved_failures": 24
+  },
+  "canonical_inputs": {
+    "results/raw/low_class_wave_paper_methods.csv": "b017a950054a5045a4a39c41362d3dc3eef56603d1db4d62d4ffbfbdc43e8ad5",
+    "results/raw/tfm_frozen_screen.csv": "de8cc5c53b9cf2c80498e732856be9dd5b7548813cfd5eed73b36dc927c73ace",
+    "results/raw/focused_tfm_ssl.csv": "e9d326c99086959d0ec7de9dc89f826e11466a3a8f309f5e0d0762d063266559"
+  },
+  "checks": {
+    "duplicate_experimental_keys": 0,
+    "missing_canonical_keys": 0,
+    "successful_primary_metrics_finite": true,
+    "historical_failures_preserved": true
+  }
+}

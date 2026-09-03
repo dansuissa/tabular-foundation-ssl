@@ -1,0 +1,17 @@
+method,total_runs,successful_runs,coverage_fraction
+catboost,120,120,1.0
+embedding_alignment_ssl,120,120,1.0
+geometric_attention_ssl,120,120,1.0
+label_propagation,120,111,0.925
+label_spreading,120,105,0.875
+laplacian_ssl,120,120,1.0
+scarf,120,120,1.0
+self_training_lightgbm,120,120,1.0
+sslae,120,120,1.0
+tabiclv2,120,120,1.0
+tabiclv2_self_training,120,120,1.0
+tabpfn3,120,120,1.0
+tabpfn3_self_training,120,120,1.0
+unlabeled_attention_ssl,120,120,1.0
+vime,120,120,1.0
+xgboost,120,120,1.0

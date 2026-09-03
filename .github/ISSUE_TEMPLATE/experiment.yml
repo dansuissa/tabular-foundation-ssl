@@ -1,0 +1,33 @@
+name: New experiment
+description: Propose a reproducible method, dataset, budget, or ablation wave.
+title: "[experiment] "
+labels: ["experiment"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Research question
+      description: State the claim this experiment can and cannot test.
+    validations:
+      required: true
+  - type: textarea
+    id: grid
+    attributes:
+      label: Experimental grid
+      description: List datasets, methods, budgets, seeds, controls, and the primary metric.
+    validations:
+      required: true
+  - type: textarea
+    id: fidelity
+    attributes:
+      label: Method fidelity and upstream identity
+      description: Identify official code/paper, deviations, package or commit, and checkpoint hash.
+    validations:
+      required: true
+  - type: textarea
+    id: gates
+    attributes:
+      label: Validation and failure gates
+      description: Define smoke tests, leakage checks, representative hard cases, and stop criteria.
+    validations:
+      required: true
