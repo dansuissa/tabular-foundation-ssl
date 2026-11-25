@@ -174,6 +174,7 @@ class TFMSelfTraining:
         initial.fit(X_labeled, y_labeled)
         best_model = initial
         best_round = 0
+        best_pseudo_total = 0
         has_val = X_val is not None and y_val is not None and len(X_val) > 0
         best_metrics = _val_metrics(y_val, initial.predict_proba(X_val)) if has_val else {
             "balanced_accuracy": -1.0,
@@ -192,6 +193,7 @@ class TFMSelfTraining:
                 "selected_round": 0,
                 "rounds_attempted": 0,
                 "n_pseudo_added_total": 0,
+                "n_pseudo_attempted_total": 0,
                 "stopped_reason": "no_unlabeled",
                 "fallback_reason": "round0",
                 "round_logs": round_logs,
@@ -257,6 +259,7 @@ class TFMSelfTraining:
             if not has_val or _better_round(metrics, best_metrics, min_ba_gain, max_ll_degradation):
                 best_model = candidate
                 best_round = round_idx
+                best_pseudo_total = accepted_total
                 best_metrics = metrics
 
             round_logs.append(
@@ -280,7 +283,8 @@ class TFMSelfTraining:
             "rounds_attempted": len(round_logs) - 1,
             "selected_round": best_round,
             "round_logs": round_logs,
-            "n_pseudo_added_total": accepted_total if best_round > 0 else 0,
+            "n_pseudo_added_total": best_pseudo_total,
+            "n_pseudo_attempted_total": accepted_total,
             "stopped_reason": stopped_reason,
             "fallback_reason": "round0" if best_round == 0 else None,
             "min_improvement_ba": min_ba_gain,
