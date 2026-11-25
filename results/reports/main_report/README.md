@@ -105,8 +105,12 @@ Self-training selected the frozen round (round 0) in
 **0.708** of TabPFN-3 runs and
 **0.692** of TabICLv2 runs. This is
 intended safety behavior: an attempted pseudo-label round is retained only when
-validation evidence meets the fixed guard. Round logs and accepted counts are in
-`tables/focused_ssl/phase_c_run_diagnostics.csv`.
+validation evidence meets the fixed guard. In
+[`phase_c_run_diagnostics.csv`](tables/focused_ssl/phase_c_run_diagnostics.csv),
+`n_pseudo_added_total` counts labels used by the selected model and
+`pseudo_candidates_seen` counts labels added across all attempted rounds.
+The selected counts were corrected from the saved round logs for 20 of 240 runs
+after Massimiliano Brighindi flagged the discrepancy. Test scores and rankings are unchanged.
 
 The run payloads do not consistently expose post-training oracle pseudo-label
 accuracy, confidence distributions, or class-prior drift as flat analyzable
